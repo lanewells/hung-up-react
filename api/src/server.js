@@ -8,7 +8,6 @@ import outfitsRouter from "./routes/outfits.js"
 import typesRouter from "./routes/types.js"
 
 const app = express()
-
 app.use(cors({ origin: "http://localhost:5173", credentials: false }))
 app.use(express.json())
 app.use(morgan("dev"))
@@ -23,13 +22,13 @@ app.use("/api/types", typesRouter)
 const PORT = process.env.PORT || 3001
 const MONGO_URI = process.env.MONGO_URI
 
-mongoose
-  .connect(MONGO_URI)
-  .then(() => {
+;(async () => {
+  try {
+    await mongoose.connect(MONGO_URI)
     console.log("Mongo connected")
     app.listen(PORT, () => console.log(`API on http://localhost:${PORT}`))
-  })
-  .catch((err) => {
-    console.error("Mongo connection error:", err.message)
+  } catch (err) {
+    console.error("Mongo connect error:", err.message)
     process.exit(1)
-  })
+  }
+})()
