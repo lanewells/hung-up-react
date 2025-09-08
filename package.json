@@ -1,8 +1,0 @@
-{
-  "name": "hung-up",
-  "private": true,
-  "workspaces": ["client", "api"],
-  "scripts": {
-    "dev:client": "npm --workspace client run dev"
-  }
-}
