@@ -7,7 +7,7 @@ const TypeSchema = new mongoose.Schema(
     drawer: { type: String, required: true },
     sufficient: { type: Boolean, required: true },
     necessity: { type: Number, required: false, min: 1, max: 3 },
-    clothing: [{ type: Schema.Types.ObjectId, ref: "Clothing" }]
+    items: [{ type: mongoose.Schema.Types.ObjectId, ref: "Clothing" }]
   },
   { timestamps: true }
 )

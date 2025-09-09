@@ -6,7 +6,7 @@ const OutfitSchema = new mongoose.Schema(
     occasion: { type: String, required: true },
     weather: { type: String, required: true },
     favorite: { type: Boolean, required: false },
-    clothing: [{ type: Schema.Types.ObjectId, ref: "Clothing" }]
+    items: [{ type: mongoose.Schema.Types.ObjectId, ref: "Clothing" }]
   },
   { timestamps: true }
 )
