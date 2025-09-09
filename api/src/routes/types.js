@@ -1,7 +1,7 @@
 import { Router } from "express"
-const r = Router()
+import { getAllTypes } from "../controllers/typeController.js"
 
-// temp for server compliance:
-r.get("/", (_req, res) => res.json([]))
+const r = Router()
+r.get("/", getAllTypes)
 
 export default r

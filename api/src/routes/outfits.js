@@ -1,7 +1,7 @@
 import { Router } from "express"
-const r = Router()
+import { getAllOutfits } from "../controllers/outfitController.js"
 
-// temp for server compliance
-r.get("/", (_req, res) => res.json([]))
+const r = Router()
+r.get("/", getAllOutfits)
 
 export default r
