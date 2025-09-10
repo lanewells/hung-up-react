@@ -7,4 +7,8 @@ node_modules/
 client/node_modules/
 api/node_modules/
 dist/
-.env*
+.env
+.env.local
+.env.development
+.env.production
+!*.env.example
