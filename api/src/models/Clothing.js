@@ -3,8 +3,8 @@ import mongoose from "mongoose"
 const ClothingSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
+    type: { type: mongoose.Schema.Types.ObjectId, ref: "Type", required: true },
     imageUrl: { type: String, required: true },
-    type: { type: String, required: true },
     subtype: { type: String, required: true },
     colors: [{ type: String, required: true }],
     size: { type: String, required: false },
