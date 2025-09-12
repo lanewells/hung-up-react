@@ -2,11 +2,12 @@ import mongoose from "mongoose"
 
 const OutfitSchema = new mongoose.Schema(
   {
-    imageUrl: { type: String, required: true },
-    occasion: { type: String, required: true },
-    weather: { type: String, required: true },
-    favorite: { type: Boolean, required: false },
-    items: [{ type: mongoose.Schema.Types.ObjectId, ref: "Clothing" }]
+    title: { type: String, required: true },
+    items: [{ type: mongoose.Schema.Types.ObjectId, ref: "Clothing" }],
+    imageUrl: { type: String },
+    occasion: { type: String },
+    weather: { type: String },
+    favorite: { type: Boolean, default: false }
   },
   { timestamps: true }
 )
