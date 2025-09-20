@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { api } from "../lib/api"
+import ClothesList from "../components/ClothesList"
 
 export default function ClothesPage() {
   const { data, isLoading, error } = useQuery({
@@ -9,15 +10,11 @@ export default function ClothesPage() {
   if (isLoading) return <p>loading…</p>
   if (error) return <p>error: {error.message}</p>
   return (
-    <>
-      <h2>clothes page</h2>
-      <ul>
-        {data.map((c) => (
-          <li key={c._id}>
-            {c.name} {c.type ? <em>({c.type.name})</em> : null}
-          </li>
-        ))}
-      </ul>
-    </>
+    <main id="clothes-section">
+      <div className="container">
+        <h2>Clothes Page</h2>
+        <ClothesList />
+      </div>
+    </main>
   )
 }
