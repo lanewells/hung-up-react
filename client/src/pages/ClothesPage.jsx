@@ -1,5 +1,6 @@
 import { useClothes } from "../hooks/useClothes"
-import ClothesList from "../components/ClothesList"
+import ItemsList from "../components/ItemsList"
+import ClothingItem from "../components/ClothingItem"
 
 export default function ClothesPage() {
   const { data: clothes = [], isLoading, error } = useClothes()
@@ -11,7 +12,10 @@ export default function ClothesPage() {
     <main id="clothes-section">
       <div className="container">
         <h2>Clothes Page</h2>
-        <ClothesList clothes={clothes} />
+        <ItemsList
+          items={clothes}
+          renderItem={(clothing) => <ClothingItem clothes={clothing} />}
+        />
       </div>
     </main>
   )
