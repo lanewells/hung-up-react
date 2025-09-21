@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react"
-import { api } from "../lib/api"
 import ClothingItem from "./ClothingItem"
 
-export default function ClothesList() {
-  const [clothes, setClothes] = useState([])
-
+export default function ClothesList({ clothes }) {
   return (
     <div className="clothes-grid">
       <h2>List:</h2>
