@@ -7,7 +7,7 @@ export default function ClothingItem({ clothes }) {
         <p className="name-text">Item name: {clothes.name}</p>
         <p className="color-text">Colors: {clothes.colors}</p>
         <p className="subtype-text">Subtype: {clothes.subtype}</p>
-        <p className="type-text">Type: {clothes.type}</p>
+        <p className="type-text">Type: {clothes.typeName}</p>
       </div>
     </div>
   )

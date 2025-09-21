@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query"
 import { api } from "../lib/api"
+import { normalizeClothing } from "../utils/normalizeClothing"
 
 export function useClothes() {
   return useQuery({
     queryKey: ["clothes"],
     queryFn: api.listClothes,
-    staleTime: 60_000
+    select: (data) => data.map(normalizeClothing)
   })
 }
