@@ -1,8 +1,8 @@
 import { NavLink, Outlet, Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
-import ClothesPage from "./pages/Clothes"
-import OutfitsPage from "./pages/Outfits"
-import TypesPage from "./pages/Types"
+import HomePage from "./pages/HomePage"
+import ClothesPage from "./pages/ClothesPage"
+import OutfitsPage from "./pages/OutfitsPage"
+import DrawersPage from "./pages/DrawersPage"
 
 function Layout() {
   return (
@@ -24,10 +24,10 @@ export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/clothes" element={<ClothesPage />} />
         <Route path="/outfits" element={<OutfitsPage />} />
-        <Route path="/types" element={<TypesPage />} />
+        <Route path="/types" element={<DrawersPage />} />
       </Route>
       {/* 404 */}
       <Route path="*" element={<div style={{ padding: 24 }}>Not found</div>} />
