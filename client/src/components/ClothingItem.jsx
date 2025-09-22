@@ -1,17 +1,17 @@
-export default function ClothingItem({ clothes }) {
+export default function ClothingItem({ clothing }) {
   return (
     <div className="clothes-item">
-      <h3>Item:</h3>
+      <h3>Clothing item:</h3>
       <img
-        src={clothes.imageUrl}
-        alt={clothes.name || ""}
+        src={clothing.imageUrl}
+        alt={clothing.name || ""}
         className="clothes-image"
       />
       <div className="clothes-details">
-        <p className="name-text">Item name: {clothes.name}</p>
-        <p className="color-text">Colors: {clothes.colors}</p>
-        <p className="subtype-text">Subtype: {clothes.subtype}</p>
-        <p className="type-text">Type: {clothes.typeName}</p>
+        <p className="name-text">Item name: {clothing.name}</p>
+        <p className="color-text">Colors: {clothing.colors}</p>
+        <p className="subtype-text">Subtype: {clothing.subtype}</p>
+        <p className="type-text">Type: {clothing.typeName}</p>
       </div>
     </div>
   )
