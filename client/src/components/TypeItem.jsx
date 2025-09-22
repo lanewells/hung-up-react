@@ -1,15 +1,15 @@
-export default function TypeItem({ types }) {
+export default function TypeItem({ type }) {
   return (
     <div>
-      <h3>{types.name}</h3>
-      {Array.isArray(types.subtypes) && types.subtypes.length > 0 && (
+      <h3>{type.name}</h3>
+      {Array.isArray(type.subtypes) && type.subtypes.length > 0 && (
         <ul>
-          {types.subtypes.map((c) => (
-            <li key={c.id || c._id}>{c}</li>
+          {type.subtypes.map((c) => (
+            <li key={c}>{c}</li>
           ))}
-          <p>Drawer: {types.drawer}</p>
         </ul>
       )}
+      <p>Drawer: {type.drawer}</p>
     </div>
   )
 }
