@@ -23,7 +23,7 @@ export default function OutfitItem({ outfit }) {
 
       {outfit.items.map((c) => (
         <div key={c.id} className="outfit-clothing-images">
-          <div class="clothing-image-wrapper">
+          <div className="clothing-image-wrapper">
             {c.imageUrl && (
               <img
                 src={c.imageUrl}
