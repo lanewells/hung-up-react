@@ -1,24 +1,9 @@
-import { NavLink, Outlet, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import ClothesPage from "./pages/ClothesPage"
 import OutfitsPage from "./pages/OutfitsPage"
 import TypesPage from "./pages/TypesPage"
-
-function Layout() {
-  return (
-    <div style={{ padding: 24 }}>
-      <nav style={{ display: "flex", gap: 12, marginBottom: 16 }}>
-        <NavLink to="/" end>
-          Home
-        </NavLink>
-        <NavLink to="/clothes">Clothes</NavLink>
-        <NavLink to="/outfits">Outfits</NavLink>
-        <NavLink to="/types">Types</NavLink>
-      </nav>
-      <Outlet />
-    </div>
-  )
-}
+import Layout from "./components/Layout"
 
 export default function App() {
   return (
