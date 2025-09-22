@@ -7,17 +7,15 @@ export default function OutfitItem({ outfit }) {
         className="outfit-image"
       />
       <h3>{outfit.title}</h3>
-      <div class="outfit-details">
-        <div class="outfit-row row"></div>
-        <p class="outfit-text"></p>
+      <div className="outfit-details">
+        <div className="outfit-row row"></div>
+        <p className="outfit-text"></p>
         <p>
-          <i class="fas fa-angle-up icon"></i>
+          <i className="fas fa-angle-up icon"></i>
         </p>
       </div>
 
-      <p class="occasion-text">
-        <strong></strong>
-      </p>
+      <p className="occasion-text"></p>
 
       {/* "items" in map below refers to the "items" property of Outfit (clothing items) */}
 
