@@ -13,7 +13,7 @@ export default function DrawersPage() {
       <h2>types/drawers page</h2>
       <ItemsList
         items={types}
-        renderItem={(type) => <TypeItem types={type} />}
+        renderItem={(type) => <TypeItem type={type} />}
       />
     </div>
   )
