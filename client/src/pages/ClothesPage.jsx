@@ -14,7 +14,7 @@ export default function ClothesPage() {
         <h2>Clothes Page</h2>
         <ItemsList
           items={clothes}
-          renderItem={(clothing) => <ClothingItem clothes={clothing} />}
+          renderItem={(clothing) => <ClothingItem clothing={clothing} />}
         />
       </div>
     </main>
