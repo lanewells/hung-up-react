@@ -19,7 +19,7 @@ export default function OutfitItem({ outfit }) {
         <strong></strong>
       </p>
 
-      {/* map below refers to the "items" property of Outfit (clothing items) */}
+      {/* "items" in map below refers to the "items" property of Outfit (clothing items) */}
 
       {outfit.items.map((c) => (
         <div key={c.id} className="outfit-clothing-images">
