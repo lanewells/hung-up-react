@@ -1,4 +1,4 @@
-export default function ItemList({ items, renderItem }) {
+export default function ItemsList({ items, renderItem }) {
   return (
     <div className="items-grid">
       <ul>
