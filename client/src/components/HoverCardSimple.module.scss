@@ -1,0 +1,45 @@
+.columnThird {
+  flex: 0 0 30%;
+}
+
+.hoverCard {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 300px;
+}
+
+.hoverCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.hoverCard img:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.4s ease-in-out;
+  z-index: 2;
+}
+
+.innerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  z-index: 3;
+}
+
+.innerContent h4 {
+  position: absolute;
+  width: fit-content;
+  z-index: 3;
+  color: var(--txt-color-lt);
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  padding: 20px;
+}
