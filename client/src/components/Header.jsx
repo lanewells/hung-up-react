@@ -1,17 +1,17 @@
 import { NavLink, Link } from "react-router-dom"
-import "./Header.css"
+import classes from "./Header.module.scss"
 
 export default function Header() {
   return (
     <header>
       <nav>
-        <div className="start" style={{ padding: 24 }}>
-          <Link to="/" className="logo">
+        <div className={classes.start}>
+          <Link to="/" className={classes.logo}>
             <img src={null} alt="logo" />
           </Link>
           <h2>Hung-Up</h2>
         </div>
-        <div className="navlinks-container">
+        <div className={classes["navlinks-container"]}>
           <NavLink to="/" end>
             Home
           </NavLink>

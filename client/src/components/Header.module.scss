@@ -44,16 +44,15 @@ nav {
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-decoration: none;
-}
 
-.navlinks-container > *.hover {
-  color: var(--txt-color-lt);
-  text-shadow: #6a6760 1px 0 25px;
-}
-
-.navlinks-container > *.active {
-  background-color: var(--txt-color-dk);
-  color: var(--txt-color-lt);
+  &.hover {
+    color: var(--txt-color-lt);
+    text-shadow: #6a6760 1px 0 25px;
+  }
+  &.active {
+    background-color: var(--txt-color-dk);
+    color: var(--txt-color-lt);
+  }
 }
 
 .navlinks-container > *:hover {
