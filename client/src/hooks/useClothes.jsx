@@ -9,3 +9,12 @@ export function useClothes() {
     select: (data) => data.map(normalizeClothing)
   })
 }
+
+export function useClothing(id) {
+  return useQuery({
+    queryKey: ["clothing", id],
+    queryFn: () => api.getClothing(id),
+    enabled: !!id,
+    select: normalizeClothing
+  })
+}
