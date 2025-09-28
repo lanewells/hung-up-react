@@ -1,0 +1,75 @@
+.outfitItem {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom: 35px;
+  }
+
+  &:hover {
+    .outfitDetails {
+      transform: translateY(0);
+    }
+  }
+}
+
+.outfitDetails {
+  position: absolute;
+  min-height: 220px;
+  max-height: 240px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--bg-color-sec);
+  transition: transform 0.4s ease-in-out;
+  transform: translateY(160px);
+  overflow: hidden;
+
+  p {
+    margin: 5px 0;
+  }
+}
+
+.outfitRow {
+  justify-content: space-between;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.outfitText {
+  font-size: 1.5em;
+}
+
+.occasionText {
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.outfitClothingImages {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  max-height: 100px;
+
+  img {
+    width: 20%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+    background-color: white;
+    padding: 0;
+  }
+}
+
+.outfitClothingImages p {
+  display: none;
+}
