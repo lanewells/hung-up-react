@@ -13,7 +13,7 @@ export default function OutfitsPage() {
         <h2>My Outfits</h2>
         <ItemsList
           items={outfits}
-          renderItem={(outfit) => <OutfitItem outfit={outfit} />}
+          renderItem={(outfit) => <OutfitItem outfit={outfit} variant="o" />}
         />
       </div>
     </main>

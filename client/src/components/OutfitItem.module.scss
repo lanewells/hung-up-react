@@ -6,8 +6,10 @@
 
   img {
     width: 100%;
+
     height: auto;
     display: block;
+
     padding-bottom: 35px;
   }
 
@@ -37,12 +39,11 @@
 }
 
 .outfitRow {
-  justify-content: space-between;
-  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .outfitText {
@@ -52,6 +53,10 @@
 .occasionText {
   font-size: 0.8em;
   text-transform: uppercase;
+}
+
+.clothingList {
+  margin-top: 10px;
 }
 
 .outfitClothingImages {

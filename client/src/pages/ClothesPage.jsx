@@ -15,7 +15,9 @@ export default function ClothesPage() {
         <h2>Clothes Page</h2>
         <ItemsList
           items={clothes}
-          renderItem={(clothing) => <ClothingItem clothing={clothing} />}
+          renderItem={(clothing) => (
+            <ClothingItem clothing={clothing} variant="c" />
+          )}
         />
       </div>
     </main>
