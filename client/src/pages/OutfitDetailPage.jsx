@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useParams, useNavigate, useLocation, Link } from "react-router-dom"
 import { useOutfit } from "../hooks/useOutfit"
 import { useMemo } from "react"
 
@@ -17,8 +17,10 @@ function FavoriteHeart({ isFav }) {
 
 export default function OutfitDetailPage() {
   const navigate = useNavigate()
+  const location = useLocation()
   const { id } = useParams()
   const { data: outfit, isLoading, error } = useOutfit(id)
+  const backTo = location.state?.from?.pathname || "/outfits"
 
   const items = useMemo(() => {
     return Array.isArray(outfit?.items)
@@ -33,7 +35,7 @@ export default function OutfitDetailPage() {
       : []
   }, [outfit])
 
-  const handleBack = () => navigate(-1)
+  const handleBack = () => navigate(backTo)
   const handleEdit = () => navigate(`/outfits/${id}/edit`)
 
   const handleDelete = () => {
