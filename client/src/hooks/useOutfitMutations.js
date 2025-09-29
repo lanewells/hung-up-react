@@ -22,3 +22,14 @@ export function useUpdateOutfit() {
     }
   })
 }
+
+export function useDeleteOutfit() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (id) => api.deleteOutfit(id),
+    onSuccess: (_, id) => {
+      qc.invalidateQueries({ queryKey: ["outfits"] })
+      qc.removeQueries({ queryKey: ["outfit", id] })
+    }
+  })
+}
