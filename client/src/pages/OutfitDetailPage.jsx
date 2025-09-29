@@ -1,6 +1,7 @@
+import { useMemo } from "react"
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom"
 import { useOutfit } from "../hooks/useOutfit"
-import { useMemo } from "react"
+import { useDeleteOutfit } from "../hooks/useOutfitMutations"
 
 function FavoriteHeart({ isFav }) {
   return (
@@ -21,6 +22,7 @@ export default function OutfitDetailPage() {
   const { id } = useParams()
   const { data: outfit, isLoading, error } = useOutfit(id)
   const backTo = location.state?.from?.pathname || "/outfits"
+  const { mutateAsync: deleteOutfit, isPending } = useDeleteOutfit()
 
   const items = useMemo(() => {
     return Array.isArray(outfit?.items)
@@ -38,9 +40,10 @@ export default function OutfitDetailPage() {
   const handleBack = () => navigate(backTo)
   const handleEdit = () => navigate(`/outfits/${id}/edit`)
 
-  const handleDelete = () => {
-    // TODO: await api.deleteOutfit(id); navigate("/outfits")
-    console.log("Delete outfit", id)
+  const handleDelete = async () => {
+    if (!window.confirm("Delete this outfit?")) return
+    await deleteOutfit(id)
+    navigate("/outfits")
   }
 
   if (isLoading)
