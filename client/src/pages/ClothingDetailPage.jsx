@@ -19,7 +19,7 @@ function StarRating({ label, value, onChange }) {
             className={`star ${n <= value ? "is-active" : ""}`}
             title={`${label} ${n} star${n > 1 ? "s" : ""}`}
           >
-            {/* TODO: create StarRating component */}
+            {/* TODO: extract StarRating component */}
             {n <= value ? "★" : "☆"}
           </button>
         ))}
@@ -70,10 +70,8 @@ export default function ClothingDetailPage() {
   const backTo = location.state?.from?.pathname || "/clothes"
 
   const handleBack = () => navigate(backTo)
-  const handleEdit = () => {
-    // TODO: route to edit form / open modal
-    console.log("Edit clicked", id)
-  }
+  const handleEdit = () => navigate(`/clothes/${id}/edit`)
+
   const handleDelete = async () => {
     // TODO: await api.deleteClothing(id); navigate("/clothes")
     console.log("Delete clicked", id)

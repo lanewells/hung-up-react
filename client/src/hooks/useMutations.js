@@ -11,3 +11,14 @@ export function useCreateClothing() {
     }
   })
 }
+
+export function useUpdateClothing() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: ({ id, data }) => api.updateClothing(id, data),
+    onSuccess: (updated) => {
+      qc.invalidateQueries({ queryKey: ["clothes"] })
+      qc.setQueryData(["clothing", updated.id || updated._id], updated)
+    }
+  })
+}
