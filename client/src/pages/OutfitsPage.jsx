@@ -6,6 +6,7 @@ import { useOutfits } from "../hooks/useOutfit"
 export default function OutfitsPage() {
   const { data: outfits = [], isLoading, error } = useOutfits()
   const location = useLocation()
+
   if (isLoading) return <p>loading…</p>
   if (error) return <p>error: {error.message}</p>
 
@@ -13,6 +14,9 @@ export default function OutfitsPage() {
     <main>
       <div className="container">
         <h2>My Outfits</h2>
+        <Link to="/outfits/new">
+          <button type="button">Add New</button>
+        </Link>
         <ItemsList
           items={outfits}
           renderItem={(outfit) => (
