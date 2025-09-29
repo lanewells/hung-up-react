@@ -17,7 +17,7 @@ export default function Header() {
           </NavLink>
           <NavLink to="/clothes">Clothes</NavLink>
           <NavLink to="/outfits">Outfits</NavLink>
-          <NavLink to="/types">Types</NavLink>
+          <NavLink to="/drawers">Drawers</NavLink>
         </div>
       </nav>
     </header>
