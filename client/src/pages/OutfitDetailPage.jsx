@@ -34,10 +34,8 @@ export default function OutfitDetailPage() {
   }, [outfit])
 
   const handleBack = () => navigate(-1)
-  const handleEdit = () => {
-    // TODO: route to edit form / open modal
-    console.log("Edit outfit", id)
-  }
+  const handleEdit = () => navigate(`/outfits/${id}/edit`)
+
   const handleDelete = () => {
     // TODO: await api.deleteOutfit(id); navigate("/outfits")
     console.log("Delete outfit", id)
