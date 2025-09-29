@@ -1,6 +1,7 @@
 import { useMemo, useState, useEffect, useCallback } from "react"
 import { useNavigate, useParams, useLocation } from "react-router-dom"
 import { useClothing } from "../hooks/useClothes"
+import { useDeleteClothing } from "../hooks/useMutations"
 
 function StarRating({ label, value, onChange }) {
   return (
@@ -68,13 +69,15 @@ export default function ClothingDetailPage() {
     []
   )
   const backTo = location.state?.from?.pathname || "/clothes"
+  const { mutateAsync: deleteClothing, isPending } = useDeleteClothing()
 
   const handleBack = () => navigate(backTo)
   const handleEdit = () => navigate(`/clothes/${id}/edit`)
 
   const handleDelete = async () => {
-    // TODO: await api.deleteClothing(id); navigate("/clothes")
-    console.log("Delete clicked", id)
+    if (!window.confirm("Delete this clothing item?")) return
+    await deleteClothing(id)
+    navigate("/clothes")
   }
 
   if (isLoading)
@@ -169,11 +172,11 @@ export default function ClothingDetailPage() {
                 Edit
               </button>
               <button
-                type="button"
-                className="btn btn-danger"
                 onClick={handleDelete}
+                disabled={isPending}
+                className="btn btn-danger"
               >
-                Delete
+                {isPending ? "Deleting…" : "Delete"}
               </button>
             </div>
           </div>
