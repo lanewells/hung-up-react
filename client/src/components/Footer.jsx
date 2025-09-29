@@ -27,7 +27,7 @@ export default function Footer() {
           </NavLink>
           <NavLink to="/clothes">Clothes</NavLink>
           <NavLink to="/outfits">Outfits</NavLink>
-          <NavLink to="/types">Types</NavLink>
+          <NavLink to="/drawers">Drawers</NavLink>
         </nav>
       </div>
       <div className="credits">

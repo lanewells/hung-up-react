@@ -19,12 +19,13 @@ export default function OutfitsPage() {
         </Link>
         <ItemsList
           items={outfits}
+          variant="o"
           renderItem={(outfit) => (
             <Link
               to={`/outfits/${outfit.id || outfit._id}`}
               state={{ from: location }}
             >
-              <OutfitItem outfit={outfit} variant="o" />
+              <OutfitItem outfit={outfit} />
             </Link>
           )}
         />

@@ -3,13 +3,13 @@ import HomePage from "./pages/HomePage"
 import Layout from "./components/Layout"
 import ClothesPage from "./pages/ClothesPage"
 import OutfitsPage from "./pages/OutfitsPage"
-import TypesPage from "./pages/TypesPage"
 import ClothingDetailPage from "./pages/ClothingDetailPage"
 import OutfitDetailPage from "./pages/OutfitDetailPage"
 import NewClothingPage from "./pages/NewClothingPage"
 import EditClothingPage from "./pages/EditClothingPage"
 import NewOutfitPage from "./pages/NewOutfitPage"
 import EditOutfitPage from "./pages/EditOutfitPage"
+import DrawersPage from "./pages/DrawersPage"
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/clothes" element={<ClothesPage />} />
         <Route path="/outfits" element={<OutfitsPage />} />
-        <Route path="/types" element={<TypesPage />} />
+        <Route path="/drawers" element={<DrawersPage />} />
         <Route path="/clothes/:id" element={<ClothingDetailPage />} />
         <Route path="/outfits/:id" element={<OutfitDetailPage />} />
         <Route path="/clothes/new" element={<NewClothingPage />} />

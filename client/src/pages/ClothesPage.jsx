@@ -1,31 +1,73 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useSearchParams } from "react-router-dom"
+import { useMemo } from "react"
 import ItemsList from "../components/ItemsList"
 import ClothingItem from "../components/ClothingItem"
-import classes from "./ClothesPage.module.scss"
 import { useClothes } from "../hooks/useClothes"
+import { useTypes } from "../hooks/useTypes"
+import classes from "./ClothesPage.module.scss"
 
 export default function ClothesPage() {
-  const { data: clothes = [], isLoading, error } = useClothes()
   const location = useLocation()
+  const [params] = useSearchParams()
+  const selectedDrawer = params.get("drawer")
 
-  if (isLoading) return <p>loading…</p>
-  if (error) return <p>error: {error.message}</p>
+  const {
+    data: clothes = [],
+    clothesLoading,
+    error: clothesError
+  } = useClothes()
+  const { data: types = [], typesLoading, error: typesError } = useTypes()
+
+  if (clothesLoading || typesLoading) return <p>loading…</p>
+  if (clothesError) return <p>error: {clothesError.message}</p>
+  if (typesError) return <p>error: {typesError.message}</p>
+
+  const typesById = useMemo(() => {
+    const m = new Map()
+    for (const t of types) m.set(String(t.id || t._id), t)
+    return m
+  }, [types])
+
+  const withDrawer = useMemo(() => {
+    return clothes.map((c) => {
+      const typeId = c.type?._id ? String(c.type._id) : String(c.type)
+      const drawer = c.type?.drawer || typesById.get(typeId)?.drawer || null
+      return { ...c, drawer }
+    })
+  }, [clothes, typesById])
+
+  const filtered = selectedDrawer
+    ? withDrawer.filter((c) => c.drawer === selectedDrawer)
+    : withDrawer
 
   return (
     <main>
       <div className={classes.container}>
-        <h2>My Clothes</h2>
+        <h2>My {selectedDrawer ? <span>{selectedDrawer}</span> : "Clothes"}</h2>
+
+        {selectedDrawer && (
+          <Link
+            to="/clothes"
+            state={{ from: location }}
+            style={{ marginBottom: 12, display: "inline-block" }}
+          >
+            Close Drawer
+          </Link>
+        )}
+
         <Link to="/clothes/new">
           <button type="button">Add New</button>
         </Link>
+
         <ItemsList
-          items={clothes}
+          items={filtered}
+          variant="c"
           renderItem={(clothing) => (
             <Link
               to={`/clothes/${clothing.id || clothing._id}`}
               state={{ from: location }}
             >
-              <ClothingItem clothing={clothing} variant="c" />
+              <ClothingItem clothing={clothing} />
             </Link>
           )}
         />

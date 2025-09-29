@@ -18,8 +18,8 @@ export default function HomePage() {
           />
           <HoverCardSimple
             className={HoverCardSimple}
-            title="Types"
-            linkedPage="/types"
+            title="Drawers"
+            linkedPage="/drawers"
           />
         </div>
       </div>
