@@ -6,6 +6,7 @@ import OutfitsPage from "./pages/OutfitsPage"
 import TypesPage from "./pages/TypesPage"
 import ClothingDetailPage from "./pages/ClothingDetailPage"
 import OutfitDetailPage from "./pages/OutfitDetailPage"
+import NewClothingPage from "./pages/NewClothingPage"
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/types" element={<TypesPage />} />
         <Route path="/clothes/:id" element={<ClothingDetailPage />} />
         <Route path="/outfits/:id" element={<OutfitDetailPage />} />
+        <Route path="/clothes/new" element={<NewClothingPage />} />
       </Route>
       <Route path="*" element={<div>Not found</div>} />
     </Routes>

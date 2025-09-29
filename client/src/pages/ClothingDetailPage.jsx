@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect, useCallback } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, useLocation } from "react-router-dom"
 import { useClothing } from "../hooks/useClothes"
 
 function StarRating({ label, value, onChange }) {
@@ -30,6 +30,8 @@ function StarRating({ label, value, onChange }) {
 
 export default function ClothingDetailPage() {
   const navigate = useNavigate()
+  const location = useLocation()
+
   const { id } = useParams()
   const { data: clothing, isLoading, error } = useClothing(id)
 
@@ -65,8 +67,9 @@ export default function ClothingDetailPage() {
     (key, val) => setRatings((r) => ({ ...r, [key]: val })),
     []
   )
+  const backTo = location.state?.from?.pathname || "/clothes"
 
-  const handleBack = () => navigate(-1)
+  const handleBack = () => navigate(backTo)
   const handleEdit = () => {
     // TODO: route to edit form / open modal
     console.log("Edit clicked", id)
