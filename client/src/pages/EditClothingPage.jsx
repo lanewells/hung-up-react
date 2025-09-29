@@ -1,22 +1,28 @@
-import { useNavigate } from "react-router-dom"
-import { useState, useMemo } from "react"
-import { useCreateClothing } from "../hooks/useMutations"
+import { useEffect, useMemo, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { useClothing } from "../hooks/useClothes"
 import { useTypes } from "../hooks/useTypes"
+import { useUpdateClothing } from "../hooks/useMutations"
 
-export default function NewClothingPage() {
+export default function EditClothingPage() {
   const navigate = useNavigate()
+  const { id } = useParams()
 
+  const {
+    data: clothing,
+    isLoading: clothingLoading,
+    error: clothingError
+  } = useClothing(id)
   const {
     data: types = [],
     isLoading: typesLoading,
     error: typesError
   } = useTypes()
-
   const {
-    mutateAsync: createClothing,
+    mutateAsync: updateClothing,
     isPending,
-    error: createError
-  } = useCreateClothing()
+    error: updateError
+  } = useUpdateClothing()
 
   const [form, setForm] = useState({
     name: "",
@@ -28,6 +34,22 @@ export default function NewClothingPage() {
     waterproof: false,
     workAppropriate: false
   })
+
+  useEffect(() => {
+    if (!clothing) return
+    setForm({
+      name: clothing.name || "",
+      type: clothing.type?._id || clothing.type || "",
+      imageUrl: clothing.imageUrl || "/placeholder.jpg",
+      subtype: clothing.subtype || "",
+      colors: Array.isArray(clothing.colors)
+        ? clothing.colors.join(", ")
+        : clothing.colors || "",
+      size: clothing.size || "",
+      waterproof: !!clothing.waterproof,
+      workAppropriate: !!clothing.workAppropriate
+    })
+  }, [clothing])
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -41,11 +63,10 @@ export default function NewClothingPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-
     const payload = {
       name: form.name.trim(),
       type: form.type,
-      imageUrl: form.imageUrl || "/placeholder-img.jpg",
+      imageUrl: form.imageUrl || "/placeholder.jpg",
       subtype: form.subtype || undefined,
       colors: form.colors
         ? form.colors
@@ -58,23 +79,22 @@ export default function NewClothingPage() {
       workAppropriate: !!form.workAppropriate
     }
 
-    const created = await createClothing(payload)
-
-    const newId = created.id || created._id
-
-    // smart redirect
+    const updated = await updateClothing({ id, data: payload })
+    const newId = updated.id || updated._id || id
     navigate(`/clothes/${newId}`, {
       replace: true,
       state: { from: { pathname: "/clothes" } }
     })
   }
 
-  if (typesLoading) return <p>loading types…</p>
+  if (clothingLoading || typesLoading) return <p>loading…</p>
+  if (clothingError) return <p>error: {clothingError.message}</p>
   if (typesError) return <p>error: {typesError.message}</p>
+  if (!clothing) return <p>not found</p>
 
   return (
     <main className="container">
-      <h2>New Clothing</h2>
+      <h2>Edit Clothing</h2>
 
       <form
         onSubmit={onSubmit}
@@ -123,7 +143,7 @@ export default function NewClothingPage() {
             name="imageUrl"
             value={form.imageUrl}
             onChange={handleChange}
-            placeholder="/placeholder-img.jpg"
+            placeholder="/placeholder.jpg"
           />
         </label>
 
@@ -167,9 +187,9 @@ export default function NewClothingPage() {
           Work appropriate
         </label>
 
-        {createError && (
+        {updateError && (
           <p style={{ color: "crimson" }}>
-            {createError.message || "Failed to create clothing."}
+            {updateError.message || "Failed to update clothing."}
           </p>
         )}
 
@@ -178,7 +198,7 @@ export default function NewClothingPage() {
             Cancel
           </button>
           <button type="submit" disabled={!canSubmit}>
-            {isPending ? "Saving…" : "Create"}
+            {isPending ? "Saving…" : "Save changes"}
           </button>
         </div>
       </form>
