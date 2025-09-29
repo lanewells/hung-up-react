@@ -8,6 +8,7 @@ import ClothingDetailPage from "./pages/ClothingDetailPage"
 import OutfitDetailPage from "./pages/OutfitDetailPage"
 import NewClothingPage from "./pages/NewClothingPage"
 import EditClothingPage from "./pages/EditClothingPage"
+import NewOutfitPage from "./pages/NewOutfitPage"
 import EditOutfitPage from "./pages/EditOutfitPage"
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/clothes/:id" element={<ClothingDetailPage />} />
         <Route path="/outfits/:id" element={<OutfitDetailPage />} />
         <Route path="/clothes/new" element={<NewClothingPage />} />
+        <Route path="/outfits/new" element={<NewOutfitPage />} />
         <Route path="/clothes/:id/edit" element={<EditClothingPage />} />
         <Route path="/outfits/:id/edit" element={<EditOutfitPage />} />
       </Route>
