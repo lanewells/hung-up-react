@@ -1,8 +1,8 @@
 header {
   background-color: var(--bg-color-sec);
   padding: 10px 20px;
-  position: fixed;
-  top: 0px;
+  position: sticky;
+  top: 0;
   width: 100%;
   z-index: 5;
 }
@@ -30,12 +30,12 @@ nav {
   align-items: center;
 }
 
-.navlinks-container {
+.navLinksContainer {
   display: flex;
   gap: 10px;
 }
 
-.navlinks-container > * {
+.navLink {
   font-weight: 500;
   color: var(--txt-color-dk);
   border: none;
@@ -55,6 +55,6 @@ nav {
   }
 }
 
-.navlinks-container > *:hover {
+.navLinksContainer:hover {
   text-shadow: var(--txt-color-dk) 0px 0 4px;
 }

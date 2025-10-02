@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
-
 @font-face {
   font-family: "Safira March";
   src: url("./assets/fonts/safira-march.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
+// Globals
 
 * {
   box-sizing: border-box;
@@ -40,7 +40,6 @@ body {
   font-family: var(--font-main);
   background-color: var(--bg-color-pri);
   color: var(--txt-color-dk);
-  padding-top: 200px;
 }
 
 h1,
