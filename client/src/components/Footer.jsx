@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import classes from "./Footer.module.scss"
+import classes from "../styles/Footer.module.scss"
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -7,30 +7,31 @@ export default function Footer() {
   }
   return (
     <footer>
-      <div className={classes.footer}>
-        <div className={classes.footer}>
-          <img src={null} alt="logo" />
+      <div className={classes.start}>
+        <div className={classes.logo}>
+          <img src="/logo.svg" alt="logo" />
         </div>
-        <div className="jump">
-          <button onClick={scrollToTop}>
-            <div>
-              <i className="fas fa-angle-up icon"></i>
-            </div>
-            Scroll to top
-          </button>
+        <div className={classes.scroll}>
+          <button onClick={scrollToTop}>Scroll to top</button>
         </div>
       </div>
       <div>
-        <nav className="navlinks-container">
-          <NavLink to="/" end>
-            Home
+        <nav className={classes.navLinksContainer}>
+          <NavLink className={classes.navLink} to="/" end>
+            My Closet
           </NavLink>
-          <NavLink to="/clothes">Clothes</NavLink>
-          <NavLink to="/outfits">Outfits</NavLink>
-          <NavLink to="/drawers">Drawers</NavLink>
+          <NavLink className={classes.navLink} to="/clothes">
+            Clothes
+          </NavLink>
+          <NavLink className={classes.navLink} to="/outfits">
+            Outfits
+          </NavLink>
+          <NavLink className={classes.navLink} to="/drawers">
+            Drawers
+          </NavLink>
         </nav>
       </div>
-      <div className="credits">
+      <div className={classes.credits}>
         <p>Hung-Up created by Delaney Wells 2024</p>
       </div>
     </footer>

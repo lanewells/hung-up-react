@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom"
-import classes from "./HoverCardSimple.module.scss"
+import classes from "../styles/HoverCardSimple.module.scss"
 
-export default function HoverCardSimple({ title, linkedPage }) {
+export default function HoverCardSimple({ title, linkedPage, imgSrc }) {
   return (
     <div className={classes.columnThird}>
       <div className={classes.hoverCard}>
         <Link to={linkedPage}>
           <div className={classes.innerContent}>
             <h4>{title}</h4>
-            <img src="/placeholder-img.jpg" alt={null} />
+            <img src={imgSrc} alt={`${title} thumbnail`} />
           </div>
         </Link>
       </div>

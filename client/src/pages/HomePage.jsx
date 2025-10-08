@@ -1,5 +1,5 @@
 import HoverCardSimple from "../components/HoverCardSimple"
-import classes from "./HomePage.module.scss"
+import classes from "../styles/HomePage.module.scss"
 
 export default function HomePage() {
   return (
@@ -7,19 +7,19 @@ export default function HomePage() {
       <div className={classes.container}>
         <div className={classes.row}>
           <HoverCardSimple
-            className={HoverCardSimple}
             title="Clothes"
             linkedPage="/clothes"
+            imgSrc="/clothes-thumbnail.jpg"
           />
           <HoverCardSimple
-            className={HoverCardSimple}
             title="Outfits"
             linkedPage="/outfits"
+            imgSrc="/outfits-thumbnail.jpg"
           />
           <HoverCardSimple
-            className={HoverCardSimple}
             title="Drawers"
             linkedPage="/drawers"
+            imgSrc="/drawers-thumbnail.jpg"
           />
         </div>
       </div>
