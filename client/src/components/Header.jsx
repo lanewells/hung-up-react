@@ -7,13 +7,13 @@ export default function Header() {
       <nav>
         <div className={classes.start}>
           <Link to="/" className={classes.logo}>
-            <img src={null} alt="logo" />
+            <img src="/logo.svg" alt="logo" />
           </Link>
           <h2>Hung-Up</h2>
         </div>
         <div className={classes.navLinksContainer}>
           <NavLink className={classes.navLink} to="/" end>
-            Home
+            My Closet
           </NavLink>
           <NavLink className={classes.navLink} to="/clothes">
             Clothes

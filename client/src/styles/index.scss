@@ -1,14 +1,14 @@
-@font-face {
-  font-family: "Safira March";
-  src: url("./assets/fonts/safira-march.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 // Globals
 
 * {
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Safira March";
+  src: url("../assets/fonts/safira-march.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 :root {
@@ -18,28 +18,30 @@
   --txt-color-lt: white;
   --font-main: "Josefin Sans", "Helvetica Neue", sans-serif;
   --font-heading: "Safira March", Georgia, serif;
-
-  color-scheme: light dark;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
-body {
+body,
+#root {
   height: 100%;
   margin: 0;
 }
 
-body {
+#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-top: 200px;
   font-family: var(--font-main);
   background-color: var(--bg-color-pri);
   color: var(--txt-color-dk);
+}
+
+main {
+  display: flex;
+  background-color: var(--bg-color-pri);
+  flex: 1;
+  margin: 0 50px 30px 50px;
 }
 
 h1,
@@ -52,23 +54,4 @@ h4 {
 
 ul {
   list-style-type: none;
-}
-
-main {
-  background-color: var(--bg-color-pri);
-  flex: 1;
-  margin: 0 50px 30px 50px;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
