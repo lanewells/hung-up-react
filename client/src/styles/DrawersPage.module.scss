@@ -1,0 +1,119 @@
+.container {
+  display: block;
+}
+
+.drawersContainer {
+  display: grid;
+  gap: 1.5rem;
+  position: relative;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+}
+
+.drawer {
+  display: grid;
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  place-items: center;
+  transition: transform 0.2s ease;
+  overflow: hidden;
+  min-height: 2em;
+  height: 8em;
+  background-image: url("/drawer-one.jpg");
+  background-position: center;
+  background-color: var(--bg-color-sec);
+  background-size: cover;
+  text-align: center;
+  text-decoration: none;
+  color: var(--txt-color-lt);
+  font-weight: 600;
+  letter-spacing: 0.3;
+  padding: 10px;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color-sec);
+    transform-origin: 0 top 0;
+    transform: scaleY(0);
+    transition: transform 0.4s ease-out;
+    z-index: 1;
+  }
+
+  &:hover::before {
+    transform: scaleY(1);
+  }
+
+  &:hover {
+    background-color: var(--txt-color-dk);
+  }
+
+  &::after {
+    content: attr(data-label);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: white;
+    font-weight: 400;
+    font-size: 1.4rem;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    opacity: 0;
+  }
+
+  &:hover .drawerPreview {
+    opacity: 1;
+  }
+}
+
+.drawerPreview {
+  position: absolute;
+  padding: 0.3em;
+  display: grid;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  justify-content: space-around;
+  gap: 0.3em;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+  gap: 6px;
+  overflow: hidden;
+  align-items: center;
+
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: none;
+    background-color: white;
+  }
+}
+
+.drawerTitle {
+  font-weight: 600;
+}
+
+.empty {
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
