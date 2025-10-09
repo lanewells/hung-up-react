@@ -1,0 +1,106 @@
+.outfitItem {
+  --title-strip: 64px;
+  --pad-x: 16px;
+  --pad-y: 14px;
+  --pad-bottom-expanded: 18px;
+
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  background: #fff;
+
+  > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &:hover .outfitDetails {
+    transform: translateY(0);
+    padding: var(--pad-y) var(--pad-x) var(--pad-bottom-expanded);
+  }
+
+  &:hover .row h2 {
+    transform: rotate(0deg);
+  }
+}
+
+.outfitDetails {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  background-color: var(--bg-color-sec);
+  transform: translateY(calc(100% - var(--title-strip)));
+  transition: transform 0.4s ease-in-out, padding 0.2s ease-in-out;
+  padding: 20px 20px 18px;
+  overflow: hidden;
+  line-height: 1.45;
+
+  p,
+  h3,
+  h2 {
+    line-height: 1.45;
+    color: var(--txt-color-dk);
+  }
+
+  p {
+    margin: 8px 0;
+    font-weight: normal;
+  }
+
+  > * + * {
+    margin-top: 10px;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: calc(var(--title-strip) - var(--pad-y) * 2);
+  gap: 8px;
+
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    letter-spacing: 0.05rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    transform: rotate(180deg);
+    transition: transform 0.25s ease;
+  }
+}
+
+.clothingList {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+  gap: 10px;
+}
+
+.outfitClothingImages {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
