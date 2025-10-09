@@ -4,7 +4,7 @@ import ItemsList from "../components/ItemsList"
 import ClothingItem from "../components/ClothingItem"
 import { useClothes } from "../hooks/useClothes"
 import { useTypes } from "../hooks/useTypes"
-import classes from "./ClothesPage.module.scss"
+import classes from "../styles/ClothesPage.module.scss"
 
 export default function ClothesPage() {
   const location = useLocation()
@@ -43,7 +43,9 @@ export default function ClothesPage() {
   return (
     <main>
       <div className={classes.container}>
-        <h2>My {selectedDrawer ? <span>{selectedDrawer}</span> : "Clothes"}</h2>
+        <h2>
+          {selectedDrawer ? <span>My {selectedDrawer}</span> : "All Clothes"}
+        </h2>
 
         {selectedDrawer && (
           <Link
@@ -55,8 +57,10 @@ export default function ClothesPage() {
           </Link>
         )}
 
-        <Link to="/clothes/new">
-          <button type="button">Add New</button>
+        <Link className={classes.link} to="/clothes/new">
+          <button className={classes.btnSec} type="button">
+            + Add item
+          </button>
         </Link>
 
         <ItemsList
