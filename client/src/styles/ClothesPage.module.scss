@@ -1,0 +1,22 @@
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+.link {
+  all: unset;
+}
+
+.btnSec {
+  background-color: var(--bg-color-pri);
+  color: var(--txt-color-dk);
+  border: 1px solid var(--txt-color-dk);
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  font-weight: 400;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--bg-color-sec);
+  }
+}
