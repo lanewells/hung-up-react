@@ -1,4 +1,4 @@
-import classes from "./ItemsList.module.scss"
+import classes from "../styles/ItemsList.module.scss"
 
 export default function ItemsList({ items, renderItem, variant }) {
   return (
