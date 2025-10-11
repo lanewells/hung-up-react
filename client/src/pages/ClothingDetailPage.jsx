@@ -2,14 +2,17 @@ import { useMemo, useState, useEffect, useCallback } from "react"
 import { useNavigate, useParams, useLocation } from "react-router-dom"
 import { useClothing } from "../hooks/useClothes"
 import { useDeleteClothing } from "../hooks/useMutations"
+import classes from "../styles/ClothingDetailPage.module.scss"
 
 function StarRating({ label, value, onChange }) {
   return (
-    <div className="rating">
-      <p>
-        <strong>{label}:</strong>
-      </p>
-      <div className="stars" role="radiogroup" aria-label={`${label} rating`}>
+    <div className={classes.rating}>
+      <p>{label}:</p>
+      <div
+        className={classes.stars}
+        role="radiogroup"
+        aria-label={`${label} rating`}
+      >
         {[1, 2, 3, 4, 5].map((n) => (
           <button
             key={n}
@@ -17,10 +20,9 @@ function StarRating({ label, value, onChange }) {
             role="radio"
             aria-checked={value === n}
             onClick={() => onChange(n)}
-            className={`star ${n <= value ? "is-active" : ""}`}
+            className={n <= value ? classes.starActive : classes.star}
             title={`${label} ${n} star${n > 1 ? "s" : ""}`}
           >
-            {/* TODO: extract StarRating component */}
             {n <= value ? "★" : "☆"}
           </button>
         ))}
@@ -82,19 +84,19 @@ export default function ClothingDetailPage() {
 
   if (isLoading)
     return (
-      <main className="container">
+      <main className={classes.container}>
         <p>loading…</p>
       </main>
     )
   if (error)
     return (
-      <main className="container">
+      <main className={classes.container}>
         <p>error: {error.message}</p>
       </main>
     )
   if (!clothing)
     return (
-      <main className="container">
+      <main className={classes.container}>
         <p>not found</p>
       </main>
     )
@@ -109,64 +111,71 @@ export default function ClothingDetailPage() {
     : clothing.colors || "Unknown"
 
   return (
-    <main id="clothing-detail-section">
-      <div className="container">
-        <h2 className="item-name">{clothing.name}</h2>
+    <main>
+      <div className={classes.container}>
+        <h2 className={classes.itemName}>{clothing.name}</h2>
 
-        <div className="clothing-details">
-          <div className="image-container">
+        <div className={classes.clothingDetails}>
+          <div className={classes.imageContainer}>
             <img
               src={clothing.imageUrl || "/placeholder-img.jpg"}
               alt={clothing.name || "Clothing item"}
-              className="clothing-image"
+              className={classes.clothingImage}
             />
           </div>
 
-          <div className="details-container">
-            <div className="details-info">
-              <div>
-                <p className="value">{typeName || "Unknown"}</p>
-                <p className="label">TYPE</p>
+          <div className={classes.detailsContainer}>
+            <div className={classes.beigeBackground}>
+              <div className={classes.detailsInfo}>
+                <div>
+                  <p className={classes.value}>{typeName || "Unknown"}</p>
+                  <p className={classes.label}>TYPE</p>
+                </div>
+                <div>
+                  <p className={classes.value}>
+                    {clothing.subtype || "Unknown"}
+                  </p>
+                  <p className={classes.label}>STYLE</p>
+                </div>
+                <div>
+                  <p className={classes.value}>{colorsText}</p>
+                  <p className={classes.label}>COLOR</p>
+                </div>
+                <div>
+                  <p className={classes.value}>{clothing.size || "Unknown"}</p>
+                  <p className={classes.label}>SIZE</p>
+                </div>
               </div>
-              <div>
-                <p className="value">{clothing.subtype || "Unknown"}</p>
-                <p className="label">STYLE</p>
-              </div>
-              <div>
-                <p className="value">{colorsText}</p>
-                <p className="label">COLOR</p>
-              </div>
-              <div>
-                <p className="value">{clothing.size || "Unknown"}</p>
-                <p className="label">SIZE</p>
+
+              <div className={classes.ratings}>
+                <StarRating
+                  label="WARMTH"
+                  value={ratings.comfort}
+                  onChange={(v) => setRating("comfort", v)}
+                />
+                <StarRating
+                  label="COMFORT"
+                  value={ratings.confidence}
+                  onChange={(v) => setRating("confidence", v)}
+                />
+                <StarRating
+                  label="CONFIDENCE"
+                  value={ratings.warmth}
+                  onChange={(v) => setRating("warmth", v)}
+                />
               </div>
             </div>
-
-            <div className="ratings">
-              <StarRating
-                label="Comfort"
-                value={ratings.comfort}
-                onChange={(v) => setRating("comfort", v)}
-              />
-              <StarRating
-                label="Confidence"
-                value={ratings.confidence}
-                onChange={(v) => setRating("confidence", v)}
-              />
-              <StarRating
-                label="Warmth"
-                value={ratings.warmth}
-                onChange={(v) => setRating("warmth", v)}
-              />
-            </div>
-
-            <div className="actions">
-              <button type="button" className="btn" onClick={handleBack}>
+            <div className={classes.actions}>
+              <button
+                type="button"
+                className={classes.btnPri}
+                onClick={handleBack}
+              >
                 Go back
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className={classes.btnPri}
                 onClick={handleEdit}
               >
                 Edit
@@ -174,7 +183,7 @@ export default function ClothingDetailPage() {
               <button
                 onClick={handleDelete}
                 disabled={isPending}
-                className="btn btn-danger"
+                className={classes.btnSec}
               >
                 {isPending ? "Deleting…" : "Delete"}
               </button>

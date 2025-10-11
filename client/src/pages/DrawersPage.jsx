@@ -7,7 +7,6 @@ import classes from "../styles/DrawersPage.module.scss"
 export default function DrawersPage() {
   const location = useLocation()
 
-  // Always call hooks
   const {
     data: types = [],
     isLoading: typesLoading,
@@ -20,7 +19,6 @@ export default function DrawersPage() {
     error: clothesError
   } = useClothes()
 
-  // Memos always called (guard inside)
   const drawers = useMemo(() => {
     return Array.from(
       new Set((types || []).map((t) => t.drawer).filter(Boolean))
@@ -54,7 +52,6 @@ export default function DrawersPage() {
     return map
   }, [drawers, clothesWithDrawer])
 
-  // Now render conditionally (no early returns before hooks)
   if (typesLoading || clothesLoading) return <p>loading…</p>
   if (typesError) return <p>error: {typesError.message}</p>
   if (clothesError) return <p>error: {clothesError.message}</p>

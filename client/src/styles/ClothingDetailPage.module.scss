@@ -1,0 +1,204 @@
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+  color: var(--txt-color-dk);
+  font-family: var(--font-main);
+}
+
+.itemName {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-family: var(--font-heading);
+}
+
+.clothingDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.imageContainer {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.clothingImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 48vh;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+.detailsContainer {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.beigeBackground {
+  background-color: var(--bg-color-sec);
+  border: none;
+  border-radius: 14px;
+}
+
+.detailsInfo {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding: 0.75rem 0.75rem 0.5rem;
+
+  p {
+    line-height: 1rem;
+  }
+}
+
+.value {
+  margin: 0.25rem 0;
+  font-weight: 600;
+  word-break: break-word;
+  color: var(--txt-color-dk);
+}
+
+.label,
+.rating p {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.ratings {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  color: var(--txt-color-dk);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  p {
+    font-size: 0.8rem;
+  }
+}
+
+.stars {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.star {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  background: transparent;
+  padding: 0.25rem 0.45rem;
+  font: 600 0.9rem/1 system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial,
+    sans-serif;
+  color: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  transition: transform 60ms ease, background-color 0.15s ease,
+    border-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+  &:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+}
+
+.starActive {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: #3b82f6;
+  color: #3b82f6;
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 0.25rem 0.45rem;
+  font: 600 0.9rem/1 system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial,
+    sans-serif;
+  cursor: pointer;
+  transition: transform 60ms ease, background-color 0.15s ease;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btnPri,
+.btnSec,
+.btnDan {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1;
+
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.btnPri {
+  background-color: var(--txt-color-dk);
+  color: var(--txt-color-lt);
+  border-color: transparent;
+
+  &:hover {
+    opacity: 70%;
+  }
+  &:active {
+    background-color: #151515;
+  }
+}
+
+.btnSec {
+  background-color: var(--bg-color-pri);
+  color: var(--txt-color-dk);
+  border-color: var(--txt-color-dk);
+
+  &:hover {
+    background-color: var(--bg-color-sec);
+    box-shadow: inset 0 2px 4px #2626264d;
+  }
+  &:active {
+    background-color: #ddd8cc;
+  }
+}
