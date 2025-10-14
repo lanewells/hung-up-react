@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom"
 import { useOutfit } from "../hooks/useOutfit"
 import { useDeleteOutfit } from "../hooks/useOutfitMutations"
+import classes from "../styles/OutfitDetailPage.module.scss"
 
 function FavoriteHeart({ isFav }) {
   return (
@@ -11,7 +12,7 @@ function FavoriteHeart({ isFav }) {
       style={{ fontSize: 24, lineHeight: 1 }}
     >
       {/* TODO: create FavoriteHeart component */}
-      {isFav ? "❤️" : "🤍"}
+      {isFav ? "❤️" : "🩶"}
     </span>
   )
 }
@@ -48,19 +49,19 @@ export default function OutfitDetailPage() {
 
   if (isLoading)
     return (
-      <main className="container">
+      <main className={classes.container}>
         <p>loading…</p>
       </main>
     )
   if (error)
     return (
-      <main className="container">
+      <main className={classes.container}>
         <p>error: {error.message}</p>
       </main>
     )
   if (!outfit)
     return (
-      <main className="container">
+      <main className={classes.container}>
         <p>not found</p>
       </main>
     )
@@ -68,94 +69,49 @@ export default function OutfitDetailPage() {
   const cover = outfit.imageUrl || "/placeholder-img.jpg"
 
   return (
-    <main id="outfit-detail-section">
-      <div className="container">
-        <header
-          className="outfit-header"
-          style={{
-            display: "flex",
-            gap: 16,
-            alignItems: "center",
-            justifyContent: "space-between"
-          }}
-        >
-          <h2 style={{ margin: 0 }}>{outfit.title}</h2>
+    <main id={classes.outfitDetailSection}>
+      <div className={classes.container}>
+        <div className={classes.outfitHeader}>
+          <h2>{outfit.title}</h2>
           <FavoriteHeart isFav={!!outfit.favorite} />
-        </header>
+        </div>
 
-        <div
-          className="outfit-details"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "320px 1fr",
-            gap: 24,
-            alignItems: "start",
-            marginTop: 16
-          }}
-        >
-          <div className="image-container">
+        <div className={classes.outfitDetails}>
+          <div className={classes.imageContainer}>
             <img
               src={cover}
               alt={outfit.title}
-              className="outfit-image"
-              style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: 12,
-                objectFit: "cover"
-              }}
+              className={classes.outfitImage}
             />
           </div>
 
-          <div
-            className="details-container"
-            style={{ display: "grid", gap: 16 }}
-          >
-            <div
-              className="meta"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                gap: 12
-              }}
-            >
+          <div className={classes.detailsContainer}>
+            <div className={classes.meta}>
               <div>
-                <p className="value">{outfit.occasion || "—"}</p>
-                <p className="label">OCCASION</p>
+                <p className={classes.value}>{outfit.occasion || "—"}</p>
+                <p className={classes.label}>OCCASION</p>
               </div>
               <div>
-                <p className="value">{outfit.weather || "—"}</p>
-                <p className="label">WEATHER</p>
+                <p className={classes.value}>{outfit.weather || "—"}</p>
+                <p className={classes.label}>WEATHER</p>
               </div>
               <div>
-                <p className="value">{items.length}</p>
-                <p className="label">ITEMS</p>
+                <p className={classes.value}>{items.length}</p>
+                <p className={classes.label}>ITEMS</p>
               </div>
             </div>
 
-            <section>
-              <h3 style={{ margin: "8px 0 12px" }}>Items in this outfit</h3>
-              <div
-                className="outfit-items-grid"
-                style={{
-                  display: "grid",
-                  gap: 12,
-                  gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))"
-                }}
-              >
+            <section className={classes.clothingPiecesSection}>
+              <h3 className={classes.sectionTitle}>Items in this outfit</h3>
+              <div className={classes.outfitItemsGrid}>
                 {items.map((c) => (
                   <Link
                     key={c.id}
                     to={`/clothes/${c.id}`}
-                    className="outfit-item-card"
-                    style={{
-                      display: "grid",
-                      gap: 8,
-                      textDecoration: "none"
-                    }}
+                    className={classes.outfitItemCard}
                   >
                     <div
-                      className="thumb"
+                      className={classes.thumb}
                       style={{
                         width: "100%",
                         aspectRatio: "1 / 1",
@@ -184,22 +140,26 @@ export default function OutfitDetailPage() {
             </section>
 
             <div
-              className="actions"
+              className={classes.actions}
               style={{ display: "flex", gap: 8, marginTop: 8 }}
             >
-              <button type="button" className="btn" onClick={handleBack}>
+              <button
+                type="button"
+                className={classes.btnPri}
+                onClick={handleBack}
+              >
                 Go back
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className={classes.btnPri}
                 onClick={handleEdit}
               >
                 Edit
               </button>
               <button
                 type="button"
-                className="btn btn-danger"
+                className={classes.btnSec}
                 onClick={handleDelete}
               >
                 Delete
