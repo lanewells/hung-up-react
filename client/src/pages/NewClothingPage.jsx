@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useState, useMemo } from "react"
 import { useCreateClothing } from "../hooks/useMutations"
 import { useTypes } from "../hooks/useTypes"
+import classes from "../styles/ClothingForms.module.scss"
 
 export default function NewClothingPage() {
   const navigate = useNavigate()
@@ -73,115 +74,138 @@ export default function NewClothingPage() {
   if (typesError) return <p>error: {typesError.message}</p>
 
   return (
-    <main className="container">
-      <h2>New Clothing</h2>
+    <main>
+      <div className={classes.container}>
+        <h2 className={classes.title}>New Clothing</h2>
 
-      <form
-        onSubmit={onSubmit}
-        style={{ display: "grid", gap: 12, maxWidth: 560 }}
-      >
-        <label>
-          Name
-          <input
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        <div className={classes.formContainer}>
+          <form className={classes.form} onSubmit={onSubmit}>
+            <div className={classes.beigeBackground}>
+              <div className={classes.labelsContainer}>
+                <label>
+                  <span className={classes.labelText}>Name</span>
+                  <input
+                    className={classes.input}
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
 
-        <label>
-          Type
-          <select
-            name="type"
-            value={form.type}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select a type…</option>
-            {types.map((t) => (
-              <option key={t.id || t._id} value={t.id || t._id}>
-                {t.name}
-              </option>
-            ))}
-          </select>
-        </label>
+                <label>
+                  <span className={classes.labelText}>Type</span>
+                  <select
+                    className={classes.dropdownText}
+                    name="type"
+                    value={form.type}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select a type…</option>
+                    {types.map((t) => (
+                      <option key={t.id || t._id} value={t.id || t._id}>
+                        {t.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
 
-        <label>
-          Subtype
-          <input
-            name="subtype"
-            value={form.subtype}
-            onChange={handleChange}
-            placeholder="e.g., T-shirt, Bermuda"
-          />
-        </label>
+                <label>
+                  <span className={classes.labelText}>Subtype</span>
+                  <input
+                    className={classes.input}
+                    name="subtype"
+                    value={form.subtype}
+                    onChange={handleChange}
+                    placeholder="T-shirt, Bermuda"
+                  />
+                </label>
 
-        <label>
-          Image URL
-          <input
-            name="imageUrl"
-            value={form.imageUrl}
-            onChange={handleChange}
-            placeholder="/placeholder-img.jpg"
-          />
-        </label>
+                <label>
+                  <span className={classes.labelText}>Image URL</span>
+                  <input
+                    className={classes.input}
+                    name="imageUrl"
+                    value={form.imageUrl}
+                    onChange={handleChange}
+                    placeholder="/placeholder-img.jpg"
+                  />
+                </label>
 
-        <label>
-          Colors (comma-sep)
-          <input
-            name="colors"
-            value={form.colors}
-            onChange={handleChange}
-            placeholder="Blue, Black"
-          />
-        </label>
+                <label>
+                  <span className={classes.labelText}>Colors</span>
+                  <input
+                    className={classes.input}
+                    name="colors"
+                    value={form.colors}
+                    onChange={handleChange}
+                    placeholder="Blue, Black"
+                  />
+                </label>
 
-        <label>
-          Size
-          <input
-            name="size"
-            value={form.size}
-            onChange={handleChange}
-            placeholder="S / M / L / 30x30"
-          />
-        </label>
+                <label>
+                  <span className={classes.labelText}>Size</span>
+                  <input
+                    className={classes.input}
+                    name="size"
+                    value={form.size}
+                    onChange={handleChange}
+                    placeholder="S / M / L / 30x30"
+                  />
+                </label>
 
-        <label>
-          <input
-            type="checkbox"
-            name="waterproof"
-            checked={form.waterproof}
-            onChange={handleChange}
-          />
-          Waterproof
-        </label>
+                <label className={classes.label}>
+                  <input
+                    className={classes.checkbox}
+                    type="checkbox"
+                    name="waterproof"
+                    checked={form.waterproof}
+                    onChange={handleChange}
+                  />
+                  <span className={classes.checkboxLabel}>Waterproof</span>
+                </label>
 
-        <label>
-          <input
-            type="checkbox"
-            name="workAppropriate"
-            checked={form.workAppropriate}
-            onChange={handleChange}
-          />
-          Work appropriate
-        </label>
+                <label className={classes.label}>
+                  <input
+                    className={classes.checkbox}
+                    type="checkbox"
+                    name="workAppropriate"
+                    checked={form.workAppropriate}
+                    onChange={handleChange}
+                  />
+                  <span className={classes.checkboxLabel}>
+                    Work appropriate
+                  </span>
+                </label>
+              </div>
+            </div>
 
-        {createError && (
-          <p style={{ color: "crimson" }}>
-            {createError.message || "Failed to create clothing."}
-          </p>
-        )}
+            {createError && (
+              <p style={{ color: "crimson" }}>
+                {createError.message || "Failed to create clothing."}
+              </p>
+            )}
 
-        <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-          <button type="button" onClick={() => navigate(-1)}>
-            Cancel
-          </button>
-          <button type="submit" disabled={!canSubmit}>
-            {isPending ? "Saving…" : "Create"}
-          </button>
+            <div className={classes.actions}>
+              <button
+                className={classes.btnSec}
+                type="button"
+                onClick={() => navigate(-1)}
+              >
+                Cancel
+              </button>
+              <button
+                className={classes.btnPri}
+                type="submit"
+                disabled={!canSubmit}
+              >
+                {isPending ? "Saving…" : "Create"}
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </main>
   )
 }

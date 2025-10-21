@@ -2,6 +2,7 @@ import { useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCreateOutfit } from "../hooks/useOutfitMutations"
 import { useClothes } from "../hooks/useClothes"
+import classes from "../styles/OutfitForms.module.scss"
 
 export default function NewOutfitPage() {
   const navigate = useNavigate()
@@ -64,152 +65,139 @@ export default function NewOutfitPage() {
   if (clothesError) return <p>error: {clothesError.message}</p>
 
   return (
-    <main className="container">
-      <h2>New Outfit</h2>
+    <main>
+      <div className={classes.container}>
+        <h2 className={classes.title}>New Outfit</h2>
 
-      <form
-        onSubmit={onSubmit}
-        style={{ display: "grid", gap: 16, maxWidth: 800 }}
-      >
-        <label>
-          Title
-          <input
-            name="title"
-            value={form.title}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        <div className={classes.formContainer}>
+          <form className={classes.form} onSubmit={onSubmit}>
+            <div className={classes.beigeBackground}>
+              <div className={classes.labelsContainer}>
+                <label>
+                  <span className={classes.labelText}>Title</span>
+                  <input
+                    className={classes.input}
+                    name="title"
+                    value={form.title}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 12
-          }}
-        >
-          <label>
-            Image URL
-            <input
-              name="imageUrl"
-              value={form.imageUrl}
-              onChange={handleChange}
-              placeholder="/placeholder.jpg"
-            />
-          </label>
-          <label>
-            Occasion
-            <input
-              name="occasion"
-              value={form.occasion}
-              onChange={handleChange}
-              placeholder="Outdoor Bonfire"
-            />
-          </label>
-          <label>
-            Weather
-            <input
-              name="weather"
-              value={form.weather}
-              onChange={handleChange}
-              placeholder="Starry, Cool, Evening"
-            />
-          </label>
-        </div>
+                <label>
+                  <span className={classes.labelText}>Image URL</span>
+                  <input
+                    className={classes.input}
+                    name="imageUrl"
+                    value={form.imageUrl}
+                    onChange={handleChange}
+                    placeholder="/placeholder.jpg"
+                  />
+                </label>
 
-        <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <input
-            type="checkbox"
-            name="favorite"
-            checked={form.favorite}
-            onChange={handleChange}
-          />
-          Favorite
-        </label>
+                <label>
+                  <span className={classes.labelText}>Occasion</span>
+                  <input
+                    className={classes.input}
+                    name="occasion"
+                    value={form.occasion}
+                    onChange={handleChange}
+                    placeholder="Outdoor Bonfire"
+                  />
+                </label>
+                <label>
+                  <span className={classes.labelText}>Weather</span>
+                  <input
+                    className={classes.input}
+                    name="weather"
+                    value={form.weather}
+                    onChange={handleChange}
+                    placeholder="Starry, Cool, Evening"
+                  />
+                </label>
 
-        <section>
-          <h3 style={{ margin: "8px 0 12px" }}>Pick items to include</h3>
+                <label className={classes.label}>
+                  <input
+                    className={classes.checkbox}
+                    type="checkbox"
+                    name="favorite"
+                    checked={form.favorite}
+                    onChange={handleChange}
+                  />
+                  <span className={classes.checkboxLabel}>Favorite</span>
+                </label>
+              </div>
+            </div>
 
-          <div
-            style={{
-              display: "grid",
-              gap: 12,
-              gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))"
-            }}
-          >
-            {clothes.map((c) => {
-              const id = String(c.id || c._id)
-              const selected = selectedIds.includes(id)
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => toggleSelected(id)}
-                  style={{
-                    textAlign: "left",
-                    border: selected ? "2px solid #444" : "1px solid #e5e5e5",
-                    borderRadius: 10,
-                    padding: 8,
-                    background: selected ? "#fafafa" : "white",
-                    cursor: "pointer"
-                  }}
-                  aria-pressed={selected}
-                >
-                  <div
-                    style={{
-                      aspectRatio: "1/1",
-                      overflow: "hidden",
-                      borderRadius: 8,
-                      background: "#f5f5f5"
-                    }}
-                  >
-                    <img
-                      src={c.imageUrl || "/placeholder.jpg"}
-                      alt={c.name}
+            <section className={classes.selectItemsSection}>
+              <h3>Pick items to include</h3>
+
+              <div className={classes.grid}>
+                {clothes.map((c) => {
+                  const id = String(c.id || c._id)
+                  const selected = selectedIds.includes(id)
+                  return (
+                    <button
+                      className={classes.btnSelection}
+                      key={id}
+                      type="button"
+                      onClick={() => toggleSelected(id)}
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover"
+                        border: selected
+                          ? "2px solid #444"
+                          : "1px solid #e5e5e5",
+                        background: selected ? "#fafafa" : "white"
                       }}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      marginTop: 8
-                    }}
-                  >
-                    <span style={{ fontSize: 14 }}>{c.name}</span>
-                    {selected ? (
-                      <span>✓</span>
-                    ) : (
-                      <span style={{ opacity: 0.4 }}>＋</span>
-                    )}
-                  </div>
-                </button>
-              )
-            })}
-            {clothes.length === 0 && <p>No clothing yet. Add some first.</p>}
-          </div>
-        </section>
+                      aria-pressed={selected}
+                    >
+                      <div className={classes.thumb}>
+                        <img
+                          src={c.imageUrl || "/placeholder.jpg"}
+                          alt={c.name}
+                        />
+                      </div>
+                      <div className={classes.imageDescription}>
+                        <span>{c.name}</span>
+                        {selected ? (
+                          <span>✓</span>
+                        ) : (
+                          <span style={{ opacity: 0.4 }}>＋</span>
+                        )}
+                      </div>
+                    </button>
+                  )
+                })}
+                {clothes.length === 0 && (
+                  <p>No clothing yet. Add some first.</p>
+                )}
+              </div>
+            </section>
 
-        {createError && (
-          <p style={{ color: "crimson" }}>
-            {createError.message || "Failed to create outfit."}
-          </p>
-        )}
+            {createError && (
+              <p style={{ color: "crimson" }}>
+                {createError.message || "Failed to create outfit."}
+              </p>
+            )}
 
-        <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-          <button type="button" onClick={() => navigate(-1)}>
-            Cancel
-          </button>
-          <button type="submit" disabled={!canSubmit}>
-            {isPending ? "Saving…" : "Create"}
-          </button>
+            <div className={classes.actions}>
+              <button
+                className={classes.btnSec}
+                type="button"
+                onClick={() => navigate(-1)}
+              >
+                Cancel
+              </button>
+              <button
+                className={classes.btnPri}
+                type="submit"
+                disabled={!canSubmit}
+              >
+                {isPending ? "Saving…" : "Create"}
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </main>
   )
 }

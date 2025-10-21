@@ -7,9 +7,9 @@ import classes from "../styles/OutfitDetailPage.module.scss"
 function FavoriteHeart({ isFav }) {
   return (
     <span
+      className={classes.favorite}
       aria-label={isFav ? "favorite" : "not favorite"}
       title={isFav ? "Favorite" : "Not favorite"}
-      style={{ fontSize: 24, lineHeight: 1 }}
     >
       {/* TODO: create FavoriteHeart component */}
       {isFav ? "❤️" : "🩶"}
@@ -110,39 +110,20 @@ export default function OutfitDetailPage() {
                     to={`/clothes/${c.id}`}
                     className={classes.outfitItemCard}
                   >
-                    <div
-                      className={classes.thumb}
-                      style={{
-                        width: "100%",
-                        aspectRatio: "1 / 1",
-                        overflow: "hidden",
-                        borderRadius: 10,
-                        background: "#f3f3f3",
-                        display: "grid",
-                        placeItems: "center"
-                      }}
-                    >
+                    <div className={classes.thumb}>
                       <img
                         src={c.imageUrl || "/placeholder-img.jpg"}
                         alt={c.name || "Clothing item"}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover"
-                        }}
                       />
                     </div>
-                    <span style={{ color: "inherit" }}>{c.name || "—"}</span>
+                    <span>{c.name || "—"}</span>
                   </Link>
                 ))}
                 {items.length === 0 && <p>No items yet.</p>}
               </div>
             </section>
 
-            <div
-              className={classes.actions}
-              style={{ display: "flex", gap: 8, marginTop: 8 }}
-            >
+            <div className={classes.actions}>
               <button
                 type="button"
                 className={classes.btnPri}
