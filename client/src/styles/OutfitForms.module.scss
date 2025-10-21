@@ -39,12 +39,8 @@
   }
 }
 
+label,
 .label {
-  display: flex;
-  align-items: center;
-}
-
-label {
   display: flex;
   align-items: center;
 }
@@ -58,7 +54,8 @@ label {
   text-transform: uppercase;
 }
 
-.input {
+.input,
+.dropdownText {
   margin: 0.25rem 0.75rem;
   font-weight: 600;
   word-break: break-word;
