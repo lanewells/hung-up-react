@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useOutfit } from "../hooks/useOutfit"
 import { useClothes } from "../hooks/useClothes"
 import { useUpdateOutfit } from "../hooks/useOutfitMutations"
+import classes from "../styles/OutfitForms.module.scss"
 
 export default function EditOutfitPage() {
   const navigate = useNavigate()
@@ -106,164 +107,147 @@ export default function EditOutfitPage() {
   if (!outfit) return <p>not found</p>
 
   return (
-    <main className="container">
-      <h2>Edit Outfit</h2>
+    <main id="edit-outfit-page">
+      <div className={classes.container}>
+        <h2 className={classes.title}>Edit Outfit</h2>
 
-      <form
-        onSubmit={onSubmit}
-        style={{ display: "grid", gap: 16, maxWidth: 720 }}
-      >
-        <label>
-          Title
-          <input
-            name="title"
-            value={form.title}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        <div className={classes.formContainer}>
+          <form className={classes.form} onSubmit={onSubmit}>
+            <div className={classes.beigeBackground}>
+              <div className={classes.labelsContainer}>
+                <label>
+                  <span className={classes.labelText}>Title</span>
+                  <input
+                    className={classes.input}
+                    name="title"
+                    value={form.title}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
 
-        <label>
-          Image URL
-          <input
-            name="imageUrl"
-            value={form.imageUrl}
-            onChange={handleChange}
-            placeholder="/placeholder-img.jpg"
-          />
-        </label>
+                <label>
+                  <span className={classes.labelText}>Image URL</span>
+                  <input
+                    className={classes.input}
+                    name="imageUrl"
+                    value={form.imageUrl}
+                    onChange={handleChange}
+                    placeholder="/placeholder-img.jpg"
+                  />
+                </label>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 12
-          }}
-        >
-          <label>
-            Occasion
-            <input
-              name="occasion"
-              value={form.occasion}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Weather
-            <input
-              name="weather"
-              value={form.weather}
-              onChange={handleChange}
-            />
-          </label>
-          <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <input
-              type="checkbox"
-              name="favorite"
-              checked={form.favorite}
-              onChange={handleChange}
-            />
-            Favorite
-          </label>
-        </div>
+                <label>
+                  <span className={classes.labelText}>Occasion</span>
+                  <input
+                    className={classes.input}
+                    name="occasion"
+                    value={form.occasion}
+                    onChange={handleChange}
+                  />
+                </label>
 
-        <section>
-          <h3 style={{ margin: "8px 0 12px" }}>Items in this outfit</h3>
+                <label>
+                  <span className={classes.labelText}>Weather</span>
+                  <input
+                    className={classes.input}
+                    name="weather"
+                    value={form.weather}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label className={classes.label}>
+                  <input
+                    className={classes.checkbox}
+                    type="checkbox"
+                    name="favorite"
+                    checked={form.favorite}
+                    onChange={handleChange}
+                  />
+                  <span className={classes.checkboxLabel}>Favorite</span>
+                </label>
+              </div>
+            </div>
 
-          <div
-            style={{
-              display: "grid",
-              gap: 12,
-              gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))"
-            }}
-          >
-            {selectedItems.map((c) => {
-              const cid = String(c.id || c._id)
-              const name = c.name || "(unknown)"
-              const imageUrl = c.imageUrl || "/placeholder-img.jpg"
-              return (
-                <div
-                  key={cid}
-                  style={{
-                    border: "1px solid #e5e5e5",
-                    borderRadius: 10,
-                    padding: 8
-                  }}
+            <section className={classes.selectItemsSection}>
+              <h3>Items in this outfit</h3>
+
+              <div className={classes.grid}>
+                {selectedItems.map((c) => {
+                  const cid = String(c.id || c._id)
+                  const name = c.name || "(unknown)"
+                  const imageUrl = c.imageUrl || "/placeholder-img.jpg"
+                  return (
+                    <div className={classes.btnSelection} key={cid}>
+                      <div className={classes.thumb}>
+                        <img src={imageUrl} alt={name} />
+                      </div>
+                      <div className={classes.imageDescription}>
+                        <span style={{ fontSize: 14 }}>{name}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemove(cid)}
+                          aria-label={`Remove ${name}`}
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    </div>
+                  )
+                })}
+                {selectedItems.length === 0 && <p>No items selected.</p>}
+              </div>
+
+              <div className={classes.input}>
+                <select
+                  className={classes.dropdownText}
+                  style={{ minWidth: "35%" }}
+                  value={addPicker}
+                  onChange={(e) => setAddPicker(e.target.value)}
                 >
-                  <div
-                    style={{
-                      aspectRatio: "1/1",
-                      overflow: "hidden",
-                      borderRadius: 8,
-                      background: "#f5f5f5"
-                    }}
-                  >
-                    <img
-                      src={imageUrl}
-                      alt={name}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover"
-                      }}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      marginTop: 8
-                    }}
-                  >
-                    <span style={{ fontSize: 14 }}>{name}</span>
-                    <button
-                      type="button"
-                      onClick={() => handleRemove(cid)}
-                      aria-label={`Remove ${name}`}
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </div>
-              )
-            })}
-            {selectedItems.length === 0 && <p>No items selected.</p>}
-          </div>
+                  <option value="">Add an item…</option>
+                  {availableToAdd.map((c) => (
+                    <option key={c.id || c._id} value={c.id || c._id}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  className={classes.btnSec}
+                  type="button"
+                  onClick={handleAdd}
+                  disabled={!addPicker}
+                >
+                  Add
+                </button>
+              </div>
+            </section>
 
-          <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-            <select
-              value={addPicker}
-              onChange={(e) => setAddPicker(e.target.value)}
-            >
-              <option value="">Add an item…</option>
-              {availableToAdd.map((c) => (
-                <option key={c.id || c._id} value={c.id || c._id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-            <button type="button" onClick={handleAdd} disabled={!addPicker}>
-              Add
-            </button>
-          </div>
-        </section>
+            {updateError && (
+              <p style={{ color: "crimson" }}>
+                {updateError.message || "Failed to update outfit."}
+              </p>
+            )}
 
-        {updateError && (
-          <p style={{ color: "crimson" }}>
-            {updateError.message || "Failed to update outfit."}
-          </p>
-        )}
-
-        <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-          <button type="button" onClick={() => navigate(-1)}>
-            Cancel
-          </button>
-          <button type="submit" disabled={isPending}>
-            {isPending ? "Saving…" : "Save changes"}
-          </button>
+            <div className={classes.actions}>
+              <button
+                className={classes.btnSec}
+                type="button"
+                onClick={() => navigate(-1)}
+              >
+                Cancel
+              </button>
+              <button
+                className={classes.btnPri}
+                type="submit"
+                disabled={isPending}
+              >
+                {isPending ? "Saving…" : "Save changes"}
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </main>
   )
 }
