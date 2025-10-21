@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useState, useMemo } from "react"
 import { useCreateClothing } from "../hooks/useMutations"
 import { useTypes } from "../hooks/useTypes"
-import classes from "../styles/NewClothingPage.module.scss"
+import classes from "../styles/ClothingForms.module.scss"
 
 export default function NewClothingPage() {
   const navigate = useNavigate()
@@ -105,7 +105,7 @@ export default function NewClothingPage() {
                     <option value="">Select a type…</option>
                     {types.map((t) => (
                       <option key={t.id || t._id} value={t.id || t._id}>
-                        <span>{t.name}</span>
+                        {t.name}
                       </option>
                     ))}
                   </select>
