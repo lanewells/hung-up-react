@@ -16,6 +16,8 @@ button {
   font-weight: 400;
   transition: background-color 0.2s ease-in-out;
 
+  margin-right: 0.25rem;
+
   &:hover {
     background-color: var(--bg-color-sec);
   }

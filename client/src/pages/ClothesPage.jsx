@@ -49,11 +49,13 @@ export default function ClothesPage() {
 
         {selectedDrawer && (
           <Link
-            to="/clothes"
+            className={classes.link}
+            to="/drawers"
             state={{ from: location }}
-            style={{ marginBottom: 12, display: "inline-block" }}
           >
-            Close Drawer
+            <button className={classes.btnSec} type="button">
+              Go back
+            </button>
           </Link>
         )}
 
