@@ -3,6 +3,7 @@ import { useState, useMemo } from "react"
 import { useCreateClothing } from "../hooks/useMutations"
 import { useTypes } from "../hooks/useTypes"
 import classes from "../styles/ClothingForms.module.scss"
+import ImagePicker from "../components/ImagePicker"
 
 export default function NewClothingPage() {
   const navigate = useNavigate()
@@ -63,7 +64,7 @@ export default function NewClothingPage() {
 
     const newId = created.id || created._id
 
-    // smart redirect
+    // smart redirecting
     navigate(`/clothes/${newId}`, {
       replace: true,
       state: { from: { pathname: "/clothes" } }
@@ -123,17 +124,6 @@ export default function NewClothingPage() {
                 </label>
 
                 <label>
-                  <span className={classes.labelText}>Image URL</span>
-                  <input
-                    className={classes.input}
-                    name="imageUrl"
-                    value={form.imageUrl}
-                    onChange={handleChange}
-                    placeholder="/placeholder-img.jpg"
-                  />
-                </label>
-
-                <label>
                   <span className={classes.labelText}>Colors</span>
                   <input
                     className={classes.input}
@@ -152,6 +142,15 @@ export default function NewClothingPage() {
                     value={form.size}
                     onChange={handleChange}
                     placeholder="S / M / L / 30x30"
+                  />
+                </label>
+
+                <label className={classes.imagePicker}>
+                  <span className={classes.labelText}>Image</span>
+                  <ImagePicker
+                    onUploaded={(url) =>
+                      setForm((prev) => ({ ...prev, imageUrl: url }))
+                    }
                   />
                 </label>
 
