@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom"
 import { useState, useMemo } from "react"
 import { useCreateClothing } from "../hooks/useMutations"
 import { useTypes } from "../hooks/useTypes"
-import classes from "../styles/ClothingForms.module.scss"
 import ImagePicker from "../components/ImagePicker"
+import classes from "../styles/ClothingForms.module.scss"
 
 export default function NewClothingPage() {
   const navigate = useNavigate()
