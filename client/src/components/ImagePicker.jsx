@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import axios from "axios"
 import classes from "../styles/ImagePicker.module.scss"
 
@@ -39,6 +39,24 @@ export default function ImagePicker({ onUploaded }) {
     }
   }
 
+  const fileInputRef = useRef(null)
+
+  function handleRemove(e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    setFile(null)
+    setPreview("")
+    setIsUploaded(false)
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+      fileInputRef.current.blur()
+    }
+
+    onUploaded?.("") // reset on parent's form also
+  }
+
   return (
     <div className={classes.picker}>
       {preview && (
@@ -52,6 +70,7 @@ export default function ImagePicker({ onUploaded }) {
       <div className={classes.buttonContainer}>
         <label className={classes.btnSec}>
           <input
+            ref={fileInputRef}
             type="file"
             accept="image/*"
             onChange={handleSelect}
@@ -68,6 +87,16 @@ export default function ImagePicker({ onUploaded }) {
         >
           {isUploading ? "Uploading..." : isUploaded ? "Uploaded ✓" : "Upload"}
         </button>
+
+        {preview && (
+          <button
+            type="button"
+            onClick={handleRemove}
+            className={classes.btnRemove}
+          >
+            Remove
+          </button>
+        )}
       </div>
     </div>
   )
