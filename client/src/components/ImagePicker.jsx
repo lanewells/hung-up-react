@@ -1,12 +1,25 @@
-import { useState, useRef } from "react"
-import axios from "axios"
 import classes from "../styles/ImagePicker.module.scss"
+import { useEffect, useRef, useState } from "react"
+import axios from "axios"
 
-export default function ImagePicker({ onUploaded }) {
+export default function ImagePicker({ onUploaded, initialUrl = "" }) {
   const [file, setFile] = useState(null)
   const [preview, setPreview] = useState("")
   const [isUploading, setIsUploading] = useState(false)
   const [isUploaded, setIsUploaded] = useState(false)
+  const fileInputRef = useRef(null)
+
+  useEffect(() => {
+    if (initialUrl) {
+      setPreview(initialUrl)
+      setIsUploaded(true)
+      setFile(null)
+    } else {
+      setPreview("")
+      setIsUploaded(false)
+      setFile(null)
+    }
+  }, [initialUrl])
 
   function handleSelect(e) {
     const f = e.target.files?.[0]
@@ -39,22 +52,17 @@ export default function ImagePicker({ onUploaded }) {
     }
   }
 
-  const fileInputRef = useRef(null)
-
   function handleRemove(e) {
     e.preventDefault()
     e.stopPropagation()
-
     setFile(null)
     setPreview("")
     setIsUploaded(false)
-
     if (fileInputRef.current) {
       fileInputRef.current.value = ""
       fileInputRef.current.blur()
     }
-
-    onUploaded?.("") // reset on parent's form also
+    onUploaded?.("")
   }
 
   return (
@@ -92,9 +100,9 @@ export default function ImagePicker({ onUploaded }) {
           <button
             type="button"
             onClick={handleRemove}
-            className={classes.btnRemove}
+            className={classes.btnSec}
           >
-            Remove
+            x Remove
           </button>
         )}
       </div>
