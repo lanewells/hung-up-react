@@ -2,7 +2,11 @@ import classes from "../styles/ImagePicker.module.scss"
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 
-export default function ImagePicker({ onUploaded, initialUrl = "" }) {
+export default function ImagePicker({
+  onUploaded,
+  uploadType,
+  initialUrl = ""
+}) {
   const [file, setFile] = useState(null)
   const [preview, setPreview] = useState("")
   const [isUploading, setIsUploading] = useState(false)
@@ -38,9 +42,12 @@ export default function ImagePicker({ onUploaded, initialUrl = "" }) {
     form.append("image", file)
 
     try {
-      const res = await axios.post("/api/uploads/image", form, {
+      const endpoint = `/api/uploads/image/${uploadType || "clothing"}`
+
+      const res = await axios.post(endpoint, form, {
         headers: { "Content-Type": "multipart/form-data" }
       })
+
       const { url } = res.data
       onUploaded?.(url)
       setIsUploaded(true)

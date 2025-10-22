@@ -2,15 +2,18 @@ import { useMemo, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCreateOutfit } from "../hooks/useOutfitMutations"
 import { useClothes } from "../hooks/useClothes"
+import ImagePicker from "../components/ImagePicker"
 import classes from "../styles/OutfitForms.module.scss"
 
 export default function NewOutfitPage() {
   const navigate = useNavigate()
+
   const {
     data: clothes = [],
     isLoading: clothesLoading,
     error: clothesError
   } = useClothes()
+
   const {
     mutateAsync: createOutfit,
     isPending,
@@ -19,11 +22,12 @@ export default function NewOutfitPage() {
 
   const [form, setForm] = useState({
     title: "",
-    imageUrl: "/placeholder.jpg",
+    imageUrl: "",
     occasion: "",
     weather: "",
     favorite: false
   })
+
   const [selectedIds, setSelectedIds] = useState([])
 
   const handleChange = (e) => {
@@ -52,9 +56,9 @@ export default function NewOutfitPage() {
       favorite: !!form.favorite,
       items: selectedIds.map(String)
     }
-
     const created = await createOutfit(payload)
     const newId = created.id || created._id
+
     navigate(`/outfits/${newId}`, {
       replace: true,
       state: { from: { pathname: "/outfits" } }
@@ -81,17 +85,6 @@ export default function NewOutfitPage() {
                     value={form.title}
                     onChange={handleChange}
                     required
-                  />
-                </label>
-
-                <label>
-                  <span className={classes.labelText}>Image URL</span>
-                  <input
-                    className={classes.input}
-                    name="imageUrl"
-                    value={form.imageUrl}
-                    onChange={handleChange}
-                    placeholder="/placeholder.jpg"
                   />
                 </label>
 
@@ -125,6 +118,17 @@ export default function NewOutfitPage() {
                     onChange={handleChange}
                   />
                   <span className={classes.checkboxLabel}>Favorite</span>
+                </label>
+
+                <label className={classes.imagePicker}>
+                  <span className={classes.labelText}>Image</span>
+                  <ImagePicker
+                    uploadType="outfit"
+                    initialUrl={form.imageUrl}
+                    onUploaded={(url) =>
+                      setForm((p) => ({ ...p, imageUrl: url }))
+                    }
+                  />
                 </label>
               </div>
             </div>

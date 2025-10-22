@@ -135,24 +135,12 @@ export default function EditClothingPage() {
 
                 <label>
                   <span className={classes.labelText}>Subtype</span>
-
                   <input
                     className={classes.input}
                     name="subtype"
                     value={form.subtype}
                     onChange={handleChange}
                     placeholder="T-shirt, Bermuda"
-                  />
-                </label>
-
-                <label className={classes.imagePicker}>
-                  <span className={classes.labelText}>Image</span>
-                  <ImagePicker
-                    key={form._id || form.id}
-                    initialUrl={form.imageUrl || ""}
-                    onUploaded={(url) =>
-                      setForm((prev) => ({ ...prev, imageUrl: url }))
-                    }
                   />
                 </label>
 
@@ -175,6 +163,17 @@ export default function EditClothingPage() {
                     value={form.size}
                     onChange={handleChange}
                     placeholder="S / M / L / 30x30"
+                  />
+                </label>
+
+                <label className={classes.imagePicker}>
+                  <span className={classes.labelText}>Image</span>
+                  <ImagePicker
+                    uploadType="clothing"
+                    initialUrl={form.imageUrl}
+                    onUploaded={(url) =>
+                      setForm((p) => ({ ...p, imageUrl: url }))
+                    }
                   />
                 </label>
 

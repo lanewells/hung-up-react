@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom"
 import { useState, useMemo } from "react"
+import { useNavigate } from "react-router-dom"
 import { useCreateClothing } from "../hooks/useMutations"
 import { useTypes } from "../hooks/useTypes"
 import ImagePicker from "../components/ImagePicker"
@@ -43,7 +43,6 @@ export default function NewClothingPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-
     const payload = {
       name: form.name.trim(),
       type: form.type,
@@ -59,12 +58,9 @@ export default function NewClothingPage() {
       waterproof: !!form.waterproof,
       workAppropriate: !!form.workAppropriate
     }
-
     const created = await createClothing(payload)
-
     const newId = created.id || created._id
 
-    // smart redirecting
     navigate(`/clothes/${newId}`, {
       replace: true,
       state: { from: { pathname: "/clothes" } }
@@ -148,8 +144,10 @@ export default function NewClothingPage() {
                 <label className={classes.imagePicker}>
                   <span className={classes.labelText}>Image</span>
                   <ImagePicker
+                    uploadType="clothing"
+                    initialUrl={form.imageUrl}
                     onUploaded={(url) =>
-                      setForm((prev) => ({ ...prev, imageUrl: url }))
+                      setForm((p) => ({ ...p, imageUrl: url }))
                     }
                   />
                 </label>
