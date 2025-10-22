@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useOutfit } from "../hooks/useOutfit"
 import { useClothes } from "../hooks/useClothes"
 import { useUpdateOutfit } from "../hooks/useOutfitMutations"
+import ImagePicker from "../components/ImagePicker"
 import classes from "../styles/OutfitForms.module.scss"
 
 export default function EditOutfitPage() {
@@ -127,17 +128,6 @@ export default function EditOutfitPage() {
                 </label>
 
                 <label>
-                  <span className={classes.labelText}>Image URL</span>
-                  <input
-                    className={classes.input}
-                    name="imageUrl"
-                    value={form.imageUrl}
-                    onChange={handleChange}
-                    placeholder="/placeholder-img.jpg"
-                  />
-                </label>
-
-                <label>
                   <span className={classes.labelText}>Occasion</span>
                   <input
                     className={classes.input}
@@ -156,6 +146,7 @@ export default function EditOutfitPage() {
                     onChange={handleChange}
                   />
                 </label>
+
                 <label className={classes.label}>
                   <input
                     className={classes.checkbox}
@@ -165,6 +156,17 @@ export default function EditOutfitPage() {
                     onChange={handleChange}
                   />
                   <span className={classes.checkboxLabel}>Favorite</span>
+                </label>
+
+                <label className={classes.imagePicker}>
+                  <span className={classes.labelText}>Image</span>
+                  <ImagePicker
+                    uploadType="outfit"
+                    initialUrl={form.imageUrl}
+                    onUploaded={(url) =>
+                      setForm((p) => ({ ...p, imageUrl: url }))
+                    }
+                  />
                 </label>
               </div>
             </div>

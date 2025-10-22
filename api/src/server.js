@@ -7,7 +7,7 @@ import { connectDB, disconnectDB } from "./db/index.js"
 import clothesRouter from "./routes/clothes.js"
 import outfitsRouter from "./routes/outfits.js"
 import typesRouter from "./routes/types.js"
-import uploadsRouter from "./routes/uploads.js" // image upload testing
+import uploadsRouter from "./routes/uploads.js"
 
 const app = express()
 
@@ -21,7 +21,7 @@ app.get("/api/health", (req, res) => res.json({ ok: true }))
 app.use("/api/clothes", clothesRouter)
 app.use("/api/outfits", outfitsRouter)
 app.use("/api/types", typesRouter)
-app.use("/api/uploads", uploadsRouter) // image upload testing
+app.use("/api/uploads", uploadsRouter)
 
 const PORT = process.env.PORT || 3001
 const MONGO_URI = process.env.MONGO_URI

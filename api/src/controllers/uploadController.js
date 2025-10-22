@@ -6,7 +6,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-export async function uploadImage(req, res, next) {
+async function uploadImageToFolder(req, res, next, folder) {
   try {
     const file = req.file
     if (!file) return res.status(400).json({ error: "No file" })
@@ -14,7 +14,7 @@ export async function uploadImage(req, res, next) {
     const result = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
-          folder: "hung-up/clothes", // cloudinary portal
+          folder, // cloudinary portal folder location - see exported functs
           resource_type: "image",
           transformation: [{ width: 1600, height: 1600, crop: "limit" }]
         },
@@ -35,4 +35,12 @@ export async function uploadImage(req, res, next) {
   } catch (err) {
     next(err)
   }
+}
+
+export function uploadClothingImage(req, res, next) {
+  return uploadImageToFolder(req, res, next, "hung-up/clothes")
+}
+
+export function uploadOutfitImage(req, res, next) {
+  return uploadImageToFolder(req, res, next, "hung-up/outfits")
 }
