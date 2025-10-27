@@ -2,6 +2,9 @@ import { NavLink, Link } from "react-router-dom"
 import classes from "../styles/Header.module.scss"
 
 export default function Header() {
+  const getClass = ({ isActive }) =>
+    isActive ? `${classes.navLink} ${classes.active}` : classes.navLink
+
   return (
     <header>
       <nav>
@@ -12,16 +15,16 @@ export default function Header() {
           <h2>Hung-Up</h2>
         </div>
         <div className={classes.navLinksContainer}>
-          <NavLink className={classes.navLink} to="/" end>
+          <NavLink className={getClass} to="/" end>
             My Closet
           </NavLink>
-          <NavLink className={classes.navLink} to="/clothes">
+          <NavLink className={getClass} to="/clothes">
             Clothes
           </NavLink>
-          <NavLink className={classes.navLink} to="/outfits">
+          <NavLink className={getClass} to="/outfits">
             Outfits
           </NavLink>
-          <NavLink className={classes.navLink} to="/drawers">
+          <NavLink className={getClass} to="/drawers">
             Drawers
           </NavLink>
         </div>

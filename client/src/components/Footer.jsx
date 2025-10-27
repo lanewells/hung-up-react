@@ -5,6 +5,10 @@ export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
   }
+
+  const getClass = ({ isActive }) =>
+    isActive ? `${classes.navLink} ${classes.active}` : classes.navLink
+
   return (
     <footer>
       <div className={classes.start}>
@@ -17,16 +21,16 @@ export default function Footer() {
       </div>
       <div>
         <nav className={classes.navLinksContainer}>
-          <NavLink className={classes.navLink} to="/" end>
+          <NavLink className={getClass} to="/" end>
             My Closet
           </NavLink>
-          <NavLink className={classes.navLink} to="/clothes">
+          <NavLink className={getClass} to="/clothes">
             Clothes
           </NavLink>
-          <NavLink className={classes.navLink} to="/outfits">
+          <NavLink className={getClass} to="/outfits">
             Outfits
           </NavLink>
-          <NavLink className={classes.navLink} to="/drawers">
+          <NavLink className={getClass} to="/drawers">
             Drawers
           </NavLink>
         </nav>
