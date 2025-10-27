@@ -124,12 +124,11 @@
 }
 
 .starActive {
-  background: rgba(232, 157, 8, 0.537);
-  border-color: #ffe355;
+  background: rgb(255, 248, 235);
   color: #ffe355;
   -webkit-tap-highlight-color: transparent;
   appearance: none;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid #ffd91c;
   border-radius: 8px;
   padding: 0.25rem 0.45rem;
   font: 600 0.9rem/1 system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial,
