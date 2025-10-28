@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect, useCallback } from "react"
 import { useNavigate, useParams, useLocation } from "react-router-dom"
 import { useClothing } from "../hooks/useClothes"
 import { useDeleteClothing } from "../hooks/useMutations"
+import { useConfirm } from "../components/ConfirmProvider"
 import classes from "../styles/ClothingDetailPage.module.scss"
 
 function StarRating({ label, value, onChange }) {
@@ -34,9 +35,11 @@ function StarRating({ label, value, onChange }) {
 export default function ClothingDetailPage() {
   const navigate = useNavigate()
   const location = useLocation()
-
   const { id } = useParams()
+
   const { data: clothing, isLoading, error } = useClothing(id)
+  const { mutateAsync: deleteClothing, isPending } = useDeleteClothing()
+  const confirm = useConfirm()
 
   const storageKey = useMemo(() => `ratings:clothing:${id}`, [id])
 
@@ -70,14 +73,21 @@ export default function ClothingDetailPage() {
     (key, val) => setRatings((r) => ({ ...r, [key]: val })),
     []
   )
+
   const backTo = location.state?.from?.pathname || "/clothes"
-  const { mutateAsync: deleteClothing, isPending } = useDeleteClothing()
 
   const handleBack = () => navigate(backTo)
   const handleEdit = () => navigate(`/clothes/${id}/edit`)
 
   const handleDelete = async () => {
-    if (!window.confirm("Delete this clothing item?")) return
+    const ok = await confirm({
+      title: "Delete from shared demo?",
+      message:
+        "You're about to change the live demo for everyone. Bold move. Continue?",
+      confirmText: "Delete",
+      cancelText: "Cancel"
+    })
+    if (!ok) return
     await deleteClothing(id)
     navigate("/clothes")
   }
@@ -165,6 +175,7 @@ export default function ClothingDetailPage() {
                 />
               </div>
             </div>
+
             <div className={classes.actions}>
               <button
                 type="button"
