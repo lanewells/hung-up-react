@@ -14,7 +14,7 @@ export function ConfirmProvider({ children }) {
 
   const confirm = useCallback(
     ({
-      title = "Public demo",
+      title = "⚙ Public demo",
       message = "You're about to change the live demo for everyone. Bold move. Continue?",
       confirmText = "Continue",
       cancelText = "Cancel"
@@ -39,9 +39,9 @@ export function ConfirmProvider({ children }) {
       {modal && (
         <div className={classes.confirmBackdrop}>
           <div className={classes.confirmCard}>
-            <h3>{modal.title}</h3>
-            <p>{modal.message}</p>
-            <div className={classes.confirmTitle}>
+            <h3 className={classes.confirmTitle}>{modal.title}</h3>
+            <p className={classes.confirmMessage}>{modal.message}</p>
+            <div className={classes.confirmActions}>
               <button className={classes.btnSec} onClick={() => close(false)}>
                 {modal.cancelText}
               </button>

@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom"
 import { useCreateClothing } from "../hooks/useMutations"
 import { useTypes } from "../hooks/useTypes"
 import ImagePicker from "../components/ImagePicker"
+import { useConfirm } from "../components/ConfirmProvider"
 import classes from "../styles/ClothingForms.module.scss"
 
 export default function NewClothingPage() {
   const navigate = useNavigate()
+  const confirm = useConfirm()
 
   const {
     data: types = [],
@@ -43,6 +45,10 @@ export default function NewClothingPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
+
+    const ok = await confirm()
+    if (!ok) return
+
     const payload = {
       name: form.name.trim(),
       type: form.type,
