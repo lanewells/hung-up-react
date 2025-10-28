@@ -7,6 +7,7 @@
   z-index: 50;
   padding: 1rem;
 }
+
 .confirmCard {
   width: 100%;
   max-width: 560px;
@@ -16,14 +17,20 @@
   padding: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
+
 .confirmTitle {
   margin: 0 0 0.5rem 0;
   font-family: var(--font-heading);
 }
+
 .confirmMessage {
   margin: 0 0 1rem 0;
   color: var(--txt-color-dk);
+  line-height: 1.2rem;
+  font-weight: 400;
+  font-size: 0.95rem;
 }
+
 .confirmActions {
   display: flex;
   gap: 0.5rem;

@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom"
 import { useCreateOutfit } from "../hooks/useOutfitMutations"
 import { useClothes } from "../hooks/useClothes"
 import ImagePicker from "../components/ImagePicker"
+import { useConfirm } from "../components/ConfirmProvider"
 import classes from "../styles/OutfitForms.module.scss"
 
 export default function NewOutfitPage() {
   const navigate = useNavigate()
+  const confirm = useConfirm()
 
   const {
     data: clothes = [],
@@ -48,6 +50,10 @@ export default function NewOutfitPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
+
+    const ok = await confirm()
+    if (!ok) return
+
     const payload = {
       title: form.title.trim(),
       imageUrl: form.imageUrl || "/placeholder.jpg",

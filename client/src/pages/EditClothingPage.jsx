@@ -4,11 +4,13 @@ import { useClothing } from "../hooks/useClothes"
 import { useTypes } from "../hooks/useTypes"
 import { useUpdateClothing } from "../hooks/useMutations"
 import ImagePicker from "../components/ImagePicker"
+import { useConfirm } from "../components/ConfirmProvider"
 import classes from "../styles/ClothingForms.module.scss"
 
 export default function EditClothingPage() {
   const navigate = useNavigate()
   const { id } = useParams()
+  const confirm = useConfirm()
 
   const {
     data: clothing,
@@ -65,6 +67,10 @@ export default function EditClothingPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
+
+    const ok = await confirm()
+    if (!ok) return
+
     const payload = {
       name: form.name.trim(),
       type: form.type,

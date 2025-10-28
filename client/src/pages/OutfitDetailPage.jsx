@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import { useParams, useNavigate, useLocation, Link } from "react-router-dom"
 import { useOutfit } from "../hooks/useOutfit"
 import { useDeleteOutfit } from "../hooks/useOutfitMutations"
+import { useConfirm } from "../components/ConfirmProvider"
 import classes from "../styles/OutfitDetailPage.module.scss"
 
 function FavoriteHeart({ isFav }) {
@@ -21,9 +22,11 @@ export default function OutfitDetailPage() {
   const navigate = useNavigate()
   const location = useLocation()
   const { id } = useParams()
+
   const { data: outfit, isLoading, error } = useOutfit(id)
   const backTo = location.state?.from?.pathname || "/outfits"
   const { mutateAsync: deleteOutfit, isPending } = useDeleteOutfit()
+  const confirm = useConfirm()
 
   const items = useMemo(() => {
     return Array.isArray(outfit?.items)
@@ -42,7 +45,8 @@ export default function OutfitDetailPage() {
   const handleEdit = () => navigate(`/outfits/${id}/edit`)
 
   const handleDelete = async () => {
-    if (!window.confirm("Delete this outfit?")) return
+    const ok = await confirm()
+    if (!ok) return
     await deleteOutfit(id)
     navigate("/outfits")
   }

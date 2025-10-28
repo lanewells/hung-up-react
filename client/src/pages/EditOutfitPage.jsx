@@ -4,11 +4,13 @@ import { useOutfit } from "../hooks/useOutfit"
 import { useClothes } from "../hooks/useClothes"
 import { useUpdateOutfit } from "../hooks/useOutfitMutations"
 import ImagePicker from "../components/ImagePicker"
+import { useConfirm } from "../components/ConfirmProvider"
 import classes from "../styles/OutfitForms.module.scss"
 
 export default function EditOutfitPage() {
   const navigate = useNavigate()
   const { id } = useParams()
+  const confirm = useConfirm()
 
   const {
     data: outfit,
@@ -28,7 +30,7 @@ export default function EditOutfitPage() {
 
   const [form, setForm] = useState({
     title: "",
-    imageUrl: "/placeholder-img.jpg",
+    imageUrl: "",
     occasion: "",
     weather: "",
     favorite: false
@@ -86,6 +88,10 @@ export default function EditOutfitPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
+
+    const ok = await confirm()
+    if (!ok) return
+
     const payload = {
       title: form.title.trim(),
       imageUrl: form.imageUrl || "/placeholder-img.jpg",

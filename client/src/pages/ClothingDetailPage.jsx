@@ -80,13 +80,7 @@ export default function ClothingDetailPage() {
   const handleEdit = () => navigate(`/clothes/${id}/edit`)
 
   const handleDelete = async () => {
-    const ok = await confirm({
-      title: "Delete from shared demo?",
-      message:
-        "You're about to change the live demo for everyone. Bold move. Continue?",
-      confirmText: "Delete",
-      cancelText: "Cancel"
-    })
+    const ok = await confirm()
     if (!ok) return
     await deleteClothing(id)
     navigate("/clothes")
