@@ -44,7 +44,7 @@ export default function EditClothingPage() {
     setForm({
       name: clothing.name || "",
       type: clothing.type?._id || clothing.type || "",
-      imageUrl: clothing.imageUrl || "/placeholder.jpg",
+      imageUrl: clothing.imageUrl || "/placeholder-img.jpg",
       subtype: clothing.subtype || "",
       colors: Array.isArray(clothing.colors)
         ? clothing.colors.join(", ")
@@ -74,7 +74,7 @@ export default function EditClothingPage() {
     const payload = {
       name: form.name.trim(),
       type: form.type,
-      imageUrl: form.imageUrl || "/placeholder.jpg",
+      imageUrl: form.imageUrl || "/placeholder-img.jpg",
       subtype: form.subtype || undefined,
       colors: form.colors
         ? form.colors
@@ -168,7 +168,7 @@ export default function EditClothingPage() {
                     name="size"
                     value={form.size}
                     onChange={handleChange}
-                    placeholder="S / M / L / 30x30"
+                    placeholder="S / M / L / 30x32"
                   />
                 </label>
 

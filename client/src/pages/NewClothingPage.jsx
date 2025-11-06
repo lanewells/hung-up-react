@@ -143,7 +143,7 @@ export default function NewClothingPage() {
                     name="size"
                     value={form.size}
                     onChange={handleChange}
-                    placeholder="S / M / L / 30x30"
+                    placeholder="S / M / L / 30x32"
                   />
                 </label>
 

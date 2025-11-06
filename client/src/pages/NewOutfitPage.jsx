@@ -56,7 +56,7 @@ export default function NewOutfitPage() {
 
     const payload = {
       title: form.title.trim(),
-      imageUrl: form.imageUrl || "/placeholder.jpg",
+      imageUrl: form.imageUrl || "/placeholder-img.jpg",
       occasion: form.occasion || "",
       weather: form.weather || "",
       favorite: !!form.favorite,
@@ -162,7 +162,7 @@ export default function NewOutfitPage() {
                     >
                       <div className={classes.thumb}>
                         <img
-                          src={c.imageUrl || "/placeholder.jpg"}
+                          src={c.imageUrl || "/placeholder-img.jpg"}
                           alt={c.name}
                         />
                       </div>

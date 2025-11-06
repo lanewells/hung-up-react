@@ -77,7 +77,7 @@ export default function DrawersPage() {
                   preview.map((item) => (
                     <img
                       key={item.id || item._id}
-                      src={item.imageUrl || "/placeholder.jpg"}
+                      src={item.imageUrl || undefined}
                       alt={item.name}
                       loading="lazy"
                     />
