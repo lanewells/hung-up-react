@@ -8,3 +8,10 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+@media (max-width: 768px) {
+  .row {
+    gap: 1.5rem;
+    align-items: center;
+  }
+}
