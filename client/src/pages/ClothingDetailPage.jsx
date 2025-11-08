@@ -150,23 +150,24 @@ export default function ClothingDetailPage() {
                   <p className={classes.label}>SIZE</p>
                 </div>
               </div>
-
-              <div className={classes.ratings}>
-                <StarRating
-                  label="WARMTH"
-                  value={ratings.comfort}
-                  onChange={(v) => setRating("comfort", v)}
-                />
-                <StarRating
-                  label="COMFORT"
-                  value={ratings.confidence}
-                  onChange={(v) => setRating("confidence", v)}
-                />
-                <StarRating
-                  label="CONFIDENCE"
-                  value={ratings.warmth}
-                  onChange={(v) => setRating("warmth", v)}
-                />
+              <div className={classes.beigeBackground}>
+                <div className={classes.ratings}>
+                  <StarRating
+                    label="WARMTH"
+                    value={ratings.comfort}
+                    onChange={(v) => setRating("comfort", v)}
+                  />
+                  <StarRating
+                    label="COMFORT"
+                    value={ratings.confidence}
+                    onChange={(v) => setRating("confidence", v)}
+                  />
+                  <StarRating
+                    label="CONFIDENCE"
+                    value={ratings.warmth}
+                    onChange={(v) => setRating("warmth", v)}
+                  />
+                </div>
               </div>
             </div>
 
@@ -180,7 +181,7 @@ export default function ClothingDetailPage() {
               </button>
               <button
                 type="button"
-                className={classes.btnPri}
+                className={classes.btnSec}
                 onClick={handleEdit}
               >
                 Edit
