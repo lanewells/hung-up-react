@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
+    "build:client": "NPM_CONFIG_PRODUCTION=false npm --prefix ../client ci && npm --prefix ../client run build",
+    "build": "npm run build:client",
     "seed:types": "node seeds/seed-types.js",
     "seed:clothes": "node seeds/seed-clothes.js",
     "seed:outfits": "node seeds/seed-outfits.js",
