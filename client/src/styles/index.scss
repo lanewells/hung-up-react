@@ -64,3 +64,9 @@ h4 {
 ul {
   list-style-type: none;
 }
+
+@media (max-width: 768px) {
+  #root {
+    padding-top: 225px;
+  }
+}
