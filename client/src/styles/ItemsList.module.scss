@@ -9,3 +9,17 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+
+@media (max-width: 768px) {
+  .clothesGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding-inline-start: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .clothesGrid {
+    grid-template-columns: 1fr;
+  }
+}
