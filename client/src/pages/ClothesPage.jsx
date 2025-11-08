@@ -41,7 +41,7 @@ export default function ClothesPage() {
     : withDrawer
 
   return (
-    <main>
+    <main id="clothes-page">
       <div className={classes.container}>
         <h2>
           {selectedDrawer ? <span>My {selectedDrawer}</span> : "All Clothes"}
