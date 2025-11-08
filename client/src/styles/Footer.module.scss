@@ -68,3 +68,40 @@ footer {
   margin-left: 10px;
   color: var(--txt-color-dk);
 }
+
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 15px 10px;
+  }
+
+  .start {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logo img {
+    display: none;
+  }
+
+  .scroll button {
+    font-weight: bold;
+  }
+
+  .navLinksContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    margin: 0.5rem 0;
+    padding-inline-start: 0;
+  }
+
+  .credits p {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+}
