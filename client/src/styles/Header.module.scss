@@ -55,3 +55,43 @@ nav {
     color: var(--txt-color-lt);
   }
 }
+
+@media (max-width: 768px) {
+  header {
+    padding: 20px 10px 10px 10px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .start {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .logo img {
+    max-width: 35px;
+  }
+
+  header h2 {
+    font-size: 1.25rem;
+  }
+
+  .navLinksContainer {
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .navLink {
+    flex: 1 1 40%;
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+  }
+}
