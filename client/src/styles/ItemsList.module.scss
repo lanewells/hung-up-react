@@ -11,7 +11,8 @@
 }
 
 @media (max-width: 768px) {
-  .clothesGrid {
+  .clothesGrid,
+  .outfitsGrid {
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     padding-inline-start: 0;
@@ -19,7 +20,8 @@
 }
 
 @media (max-width: 480px) {
-  .clothesGrid {
+  .clothesGrid,
+  .outfitsGrid {
     grid-template-columns: 1fr;
   }
 }
