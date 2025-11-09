@@ -20,3 +20,26 @@ button {
     background-color: var(--bg-color-sec);
   }
 }
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+
+  .link {
+    display: flex;
+    width: 100%;
+  }
+
+  .btnSec {
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.95rem;
+  }
+}

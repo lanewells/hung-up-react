@@ -14,7 +14,7 @@ export default function OutfitsPage() {
   return (
     <main>
       <div className={classes.container}>
-        <h2>My Outfits</h2>
+        <h2 className={classes.pageTitle}>My Outfits</h2>
         <Link className={classes.link} to="/outfits/new">
           <button className={classes.btnSec} type="button">
             + Add item
