@@ -81,10 +81,6 @@
   p {
     line-height: 1rem;
   }
-
-  @media (max-width: 420px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 .value {
@@ -213,5 +209,37 @@
   }
   &:active {
     background-color: #ddd8cc;
+  }
+}
+
+@media (max-width: 768px) {
+  .favorite {
+    position: absolute;
+    right: 10%;
+  }
+
+  .outfitHeader {
+    justify-content: space-between;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .value {
+    font-size: 1.25rem;
+  }
+
+  .actions {
+    gap: 0.75rem;
+    margin-top: 5px;
+    flex-direction: column;
+  }
+
+  .btnPri,
+  .btnSec {
+    justify-content: center;
   }
 }
