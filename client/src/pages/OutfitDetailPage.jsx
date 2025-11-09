@@ -137,7 +137,7 @@ export default function OutfitDetailPage() {
               </button>
               <button
                 type="button"
-                className={classes.btnPri}
+                className={classes.btnSec}
                 onClick={handleEdit}
               >
                 Edit
