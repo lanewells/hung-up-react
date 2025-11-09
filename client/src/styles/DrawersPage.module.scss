@@ -118,12 +118,19 @@
 }
 
 @media (max-width: 768px) {
+  .pageTitle {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+
   .drawersContainer {
     display: grid;
     gap: 1.5rem;
     position: relative;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 1fr;
     width: 100%;
   }
 
