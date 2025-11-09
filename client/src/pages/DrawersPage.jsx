@@ -58,7 +58,7 @@ export default function DrawersPage() {
 
   return (
     <main className={classes.container}>
-      <h2>My Drawers</h2>
+      <h2 className={classes.pageTitle}>My Drawers</h2>
       <div className={classes.drawersContainer}>
         {drawers.map((name) => {
           const preview = previewsByDrawer.get(name) || []
