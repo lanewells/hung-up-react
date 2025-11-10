@@ -110,4 +110,10 @@
   .buttonContainer {
     margin-top: 5px;
   }
+
+  .btnPri,
+  .btnSec,
+  .btnPri:disabled {
+    justify-content: center;
+  }
 }
