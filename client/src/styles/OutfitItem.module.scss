@@ -104,3 +104,74 @@
     display: block;
   }
 }
+
+@media (max-width: 768px) {
+  .outfitItem {
+    --title-strip: 56px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+    transform: none;
+  }
+
+  .outfitDetails {
+    position: static;
+    transform: none;
+    transition: none;
+    padding: 12px 12px 14px;
+    background-color: var(--bg-color-sec);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .outfitItem:hover .outfitDetails {
+    transform: none;
+    padding: 12px 12px 14px;
+  }
+
+  .row {
+    min-height: auto;
+    gap: 10px;
+  }
+
+  .row h3 {
+    font-size: 1.1rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .row h2 {
+    font-size: 1.25rem;
+    transform: rotate(0deg);
+    transition: none;
+  }
+
+  .outfitDetails p {
+    margin: 6px 0 0;
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .clothingList {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(48px, 1fr));
+    gap: 8px;
+  }
+
+  .outfitClothingImages {
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+
+  .outfitClothingImages img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .outfitItem:hover {
+    transform: none;
+  }
+}
