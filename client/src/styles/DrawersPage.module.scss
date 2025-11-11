@@ -118,6 +118,28 @@
   font-size: 0.9rem;
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .drawer:hover,
+  .drawer:active {
+    background-color: transparent !important;
+    transform: none !important;
+  }
+
+  .drawer:hover::before {
+    transform: none !important;
+    opacity: 0 !important;
+    display: none !important;
+  }
+
+  .drawer:hover::after {
+    opacity: 1 !important;
+  }
+
+  .drawer:hover .drawerPreview {
+    opacity: 1 !important;
+  }
+}
+
 @media (max-width: 768px) {
   .pageTitle {
     font-size: 1.25rem;
@@ -127,12 +149,11 @@
   }
 
   .drawersContainer {
-    display: grid;
-    gap: 1.5rem;
+    gap: 1rem;
     position: relative;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    width: 100%;
+    grid-template-rows: none;
+    grid-auto-rows: 9.5em;
   }
 
   .drawer {
@@ -144,8 +165,8 @@
     place-items: center;
     transition: transform 0.2s ease;
     overflow: hidden;
-    min-height: 2em;
-    height: 9.5em;
+    min-height: 9.5em;
+    height: auto;
     background-image: url(/single-drawer.jpg);
     background-position: center;
     background-color: transparent;
