@@ -118,28 +118,6 @@
   font-size: 0.9rem;
 }
 
-@media (hover: none) and (pointer: coarse) {
-  .drawer:hover,
-  .drawer:active {
-    background-color: transparent !important;
-    transform: none !important;
-  }
-
-  .drawer:hover::before {
-    transform: none !important;
-    opacity: 0 !important;
-    display: none !important;
-  }
-
-  .drawer:hover::after {
-    opacity: 1 !important;
-  }
-
-  .drawer:hover .drawerPreview {
-    opacity: 1 !important;
-  }
-}
-
 @media (max-width: 768px) {
   .pageTitle {
     font-size: 1.25rem;
@@ -157,26 +135,20 @@
   }
 
   .drawer {
-    display: grid;
-    position: relative;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    place-items: center;
-    transition: transform 0.2s ease;
-    overflow: hidden;
     min-height: 9.5em;
     height: auto;
     background-image: url(/single-drawer.jpg);
     background-position: center;
     background-color: transparent;
     background-size: cover;
-    text-align: center;
-    text-decoration: none;
-    color: var(--txt-color-lt);
-    font-weight: 600;
-    padding: 10px;
     box-shadow: -4px 4px 7px 0px rgba(0, 0, 0, 0.55);
+  }
+
+  .drawer::before {
+    display: none !important;
+  }
+  .drawer::after {
+    display: none !important;
   }
 
   .drawerTitle {
@@ -217,14 +189,13 @@
     margin-left: -20px;
   }
 
-  .drawer:hover {
-    display: none;
+  .drawer:hover,
+  .drawer:active {
+    background-color: transparent;
+    transform: none;
   }
 
-  .drawer:hover::before,
-  .drawer:hover .drawerPreview,
-  .drawer:hover::after {
-    transform: none;
+  .drawer:hover .drawerPreview {
     opacity: 1;
   }
 }
