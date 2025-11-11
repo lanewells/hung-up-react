@@ -48,3 +48,57 @@ p span {
   font-weight: 400;
   font-size: 0.8rem;
 }
+
+@media (max-width: 768px) {
+  .item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    height: auto;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: none;
+  }
+
+  .nameText {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  .details p {
+    color: #fff;
+    font-size: 0.85rem;
+    margin: 2px 0;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .details p span {
+    font-weight: 400;
+    opacity: 0.8;
+    font-size: 0.75rem;
+  }
+
+  .details:hover {
+    opacity: 1;
+  }
+}
