@@ -48,15 +48,20 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 14px;
   overflow: hidden;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-self: right;
 }
 
 .outfitImage {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 48vh;
+  max-height: 60vh;
   object-fit: cover;
-  aspect-ratio: 4 / 5;
+  object-position: center;
+  min-width: 20vw;
 }
 
 .detailsContainer {
