@@ -44,6 +44,12 @@
   padding: 20px;
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .hoverCard:hover {
+    text-shadow: #6a6760 1px 0 25px;
+  }
+}
+
 @media (max-width: 768px) {
   .columnThird {
     flex: 0 0 90%;
