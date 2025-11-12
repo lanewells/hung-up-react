@@ -4,6 +4,11 @@
   border-radius: 10px;
 }
 
+.item:hover .details,
+.item:focus-within .details {
+  opacity: 1;
+}
+
 .item img {
   width: 100%;
   height: auto;
@@ -20,36 +25,41 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 20px;
+  padding: 0.75rem;
   opacity: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
+  text-align: center;
   transition: opacity 0.4s ease-in-out;
-  font-size: 14px;
-
-  &:hover {
-    opacity: 100%;
-  }
+  font-size: 0.8rem;
+  color: white;
+  font-weight: 400;
 }
 
-p {
-  color: #fff;
-  font-size: 1rem;
-  margin-top: 12px;
-  font-weight: 600;
-  line-height: 20%;
+.details p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+  margin-block-start: 0.1em;
+  margin-block-end: 0.1em;
 }
 
 .nameText {
-  margin-bottom: 25px;
-  font-size: 1.5em;
-  line-height: 100%;
+  font-size: 1rem;
+  line-height: 1.1;
 }
 
-p span {
-  font-weight: 400;
-  font-size: 0.8rem;
+.specs {
+  display: flex;
+  flex-direction: column;
+  height: 35%;
+  max-height: 80px;
+  justify-content: space-between;
+}
+
+.specs p span {
+  font-weight: 300;
 }
 
 @media (max-width: 768px) {
@@ -79,6 +89,7 @@ p span {
     flex-direction: column;
     justify-content: flex-end;
     transition: none;
+    text-align: left;
   }
 
   .nameText {
@@ -95,7 +106,7 @@ p span {
     line-height: 1.2;
   }
 
-  .details p span {
+  .specs p span {
     font-weight: 400;
     opacity: 0.8;
     font-size: 0.75rem;
