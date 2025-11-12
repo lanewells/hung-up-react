@@ -91,6 +91,28 @@ footer {
     font-weight: bold;
   }
 
+  .navLink,
+  .scroll button {
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s ease, text-decoration 0.15s ease;
+  }
+
+  .navLink:hover,
+  .scroll button:hover {
+    text-decoration: none;
+    color: var(--txt-color-dk);
+  }
+
+  .navLink:active,
+  .scroll button:active {
+    color: var(--txt-color-dk);
+    text-decoration: underline solid var(--txt-color-dk);
+  }
+
+  .navLink.active {
+    text-decoration: double underline var(--txt-color-dk);
+  }
+
   .navLinksContainer {
     flex-direction: column;
     align-items: center;

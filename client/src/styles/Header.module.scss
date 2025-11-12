@@ -93,5 +93,24 @@ nav {
     text-align: center;
     padding: 0.5rem 0.75rem;
     font-size: 0.95rem;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s ease, background-color 0.15s ease,
+      text-shadow 0.15s ease;
+  }
+
+  .navLink:hover {
+    color: var(--txt-color-dk);
+    text-shadow: none;
+    background-color: transparent;
+  }
+
+  .navLink:active {
+    background-color: var(--bg-color-pri);
+    color: var(--txt-color-dk);
+  }
+
+  .navLink.active {
+    background-color: var(--txt-color-dk);
+    color: var(--txt-color-lt);
   }
 }
