@@ -322,4 +322,9 @@ label,
       text-wrap: nowrap;
     }
   }
+
+  .input .btnSec,
+  .input .btnSec:disabled {
+    text-wrap: nowrap;
+  }
 }
