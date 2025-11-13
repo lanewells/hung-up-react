@@ -36,11 +36,6 @@
   gap: 1rem;
   align-items: start;
   margin-top: 0.75rem;
-
-  @media (min-width: 760px) {
-    grid-template-columns: 320px 1fr;
-    gap: 1.5rem;
-  }
 }
 
 .imageContainer {
@@ -166,16 +161,13 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-
   font-family: var(--font-main);
   font-weight: 400;
   font-size: 0.9rem;
   line-height: 1;
-
   padding: 0.5rem 0.75rem;
   border-radius: 5px;
   border: 1px solid transparent;
-
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out,
     color 0.2s ease-in-out;
 
@@ -225,6 +217,15 @@
 
   .outfitHeader {
     justify-content: space-between;
+  }
+
+  .outfitDetails {
+    grid-template-columns: 320px 1fr;
+    gap: 1.5rem;
+  }
+
+  .imageContainer {
+    justify-self: right;
   }
 
   .meta {
