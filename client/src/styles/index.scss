@@ -47,7 +47,6 @@ body,
 }
 
 main {
-  display: flex;
   background-color: var(--bg-color-pri);
   flex: 1;
   margin: 0 50px 30px 50px;
@@ -68,5 +67,9 @@ ul {
 @media (max-width: 768px) {
   #root {
     padding-top: 225px;
+  }
+
+  main {
+    margin: 0 16px 24px 26px;
   }
 }

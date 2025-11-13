@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+  width: 100%;
 }
 
 .row {
@@ -7,11 +7,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-top: 15vh;
+  width: 100%;
+  gap: 1.5rem;
 }
 
 @media (max-width: 768px) {
   .row {
-    gap: 1.5rem;
     align-items: center;
+    padding-top: 0;
   }
 }
