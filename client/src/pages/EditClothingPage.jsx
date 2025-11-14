@@ -5,6 +5,7 @@ import { useTypes } from "../hooks/useTypes"
 import { useUpdateClothing } from "../hooks/useMutations"
 import ImagePicker from "../components/ImagePicker"
 import { useConfirm } from "../components/ConfirmProvider"
+import PageMessage from "../components/PageMessage"
 import classes from "../styles/ClothingForms.module.scss"
 
 export default function EditClothingPage() {
@@ -95,10 +96,11 @@ export default function EditClothingPage() {
     })
   }
 
-  if (clothingLoading || typesLoading) return <p>loading…</p>
-  if (clothingError) return <p>error: {clothingError.message}</p>
-  if (typesError) return <p>error: {typesError.message}</p>
-  if (!clothing) return <p>not found</p>
+  if (clothingLoading || typesLoading) return <PageMessage text="Loading..." />
+  if (clothingError)
+    return <PageMessage text={`error: ${clothingError.message}`} />
+  if (typesError) return <PageMessage text={`error: ${typesError.message}`} />
+  if (!clothing) return <PageMessage text="Not found" />
 
   return (
     <main>

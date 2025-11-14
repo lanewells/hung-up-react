@@ -5,6 +5,7 @@ import { useClothes } from "../hooks/useClothes"
 import { useUpdateOutfit } from "../hooks/useOutfitMutations"
 import ImagePicker from "../components/ImagePicker"
 import { useConfirm } from "../components/ConfirmProvider"
+import PageMessage from "../components/PageMessage"
 import classes from "../styles/OutfitForms.module.scss"
 
 export default function EditOutfitPage() {
@@ -108,10 +109,11 @@ export default function EditOutfitPage() {
     })
   }
 
-  if (outfitLoading || clothesLoading) return <p>loading…</p>
-  if (outfitError) return <p>error: {outfitError.message}</p>
-  if (clothesError) return <p>error: {clothesError.message}</p>
-  if (!outfit) return <p>not found</p>
+  if (outfitLoading || clothesLoading) return <PageMessage text="Loading..." />
+  if (outfitError) return <PageMessage text={`error: ${outfitError.message}`} />
+  if (clothesError)
+    return <PageMessage text={`error: ${clothesError.message}`} />
+  if (!outfit) return <PageMessage text="Not found" />
 
   return (
     <main id="edit-outfit-page">

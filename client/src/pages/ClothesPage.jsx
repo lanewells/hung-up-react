@@ -4,6 +4,7 @@ import ItemsList from "../components/ItemsList"
 import ClothingItem from "../components/ClothingItem"
 import { useClothes } from "../hooks/useClothes"
 import { useTypes } from "../hooks/useTypes"
+import PageMessage from "../components/PageMessage.jsx"
 import classes from "../styles/ClothesPage.module.scss"
 
 export default function ClothesPage() {
@@ -18,9 +19,9 @@ export default function ClothesPage() {
   } = useClothes()
   const { data: types = [], typesLoading, error: typesError } = useTypes()
 
-  if (clothesLoading || typesLoading) return <p>loading…</p>
-  if (clothesError) return <p>error: {clothesError.message}</p>
-  if (typesError) return <p>error: {typesError.message}</p>
+  if (clothesLoading || typesLoading) return <PageMessage text="Loading..." />
+  if (clothesError) return <PageMessage text={clothesError.message} />
+  if (typesError) return <PageMessage text={typesError.message} />
 
   const typesById = useMemo(() => {
     const m = new Map()

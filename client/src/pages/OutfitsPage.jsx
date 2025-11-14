@@ -2,14 +2,15 @@ import { Link, useLocation } from "react-router-dom"
 import ItemsList from "../components/ItemsList"
 import OutfitItem from "../components/OutfitItem"
 import { useOutfits } from "../hooks/useOutfit"
+import PageMessage from "../components/PageMessage"
 import classes from "../styles/OutfitsPage.module.scss"
 
 export default function OutfitsPage() {
   const { data: outfits = [], isLoading, error } = useOutfits()
   const location = useLocation()
 
-  if (isLoading) return <p>loading…</p>
-  if (error) return <p>error: {error.message}</p>
+  if (isLoading) return <PageMessage text="Loading..." />
+  if (error) return <PageMessage text={`error: ${error.message}`} />
 
   return (
     <main>

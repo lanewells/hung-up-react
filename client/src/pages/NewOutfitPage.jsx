@@ -71,8 +71,9 @@ export default function NewOutfitPage() {
     })
   }
 
-  if (clothesLoading) return <p>loading clothes…</p>
-  if (clothesError) return <p>error: {clothesError.message}</p>
+  if (clothesLoading) return <PageMessage text="Loading..." />
+  if (clothesError)
+    return <PageMessage text={`error: ${clothesError.message}`} />
 
   return (
     <main>
@@ -171,7 +172,7 @@ export default function NewOutfitPage() {
                         {selected ? (
                           <span>✓</span>
                         ) : (
-                          <span style={{ opacity: 0.4 }}>＋</span>
+                          <span style={{ opacity: 0.4 }}>+</span>
                         )}
                       </div>
                     </button>
