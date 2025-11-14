@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation, Link } from "react-router-dom"
 import { useOutfit } from "../hooks/useOutfit"
 import { useDeleteOutfit } from "../hooks/useOutfitMutations"
 import { useConfirm } from "../components/ConfirmProvider"
+import PageMessage from "../component/PageMessage"
 import classes from "../styles/OutfitDetailPage.module.scss"
 
 function FavoriteHeart({ isFav }) {
@@ -51,24 +52,9 @@ export default function OutfitDetailPage() {
     navigate("/outfits")
   }
 
-  if (isLoading)
-    return (
-      <main className={classes.container}>
-        <p>loading…</p>
-      </main>
-    )
-  if (error)
-    return (
-      <main className={classes.container}>
-        <p>error: {error.message}</p>
-      </main>
-    )
-  if (!outfit)
-    return (
-      <main className={classes.container}>
-        <p>not found</p>
-      </main>
-    )
+  if (isLoading) return <PageMessage text="Loading..." />
+  if (error) return <PageMessage text={`error: ${error.message}`} />
+  if (!outfit) return <PageMessage text="Not found" />
 
   const cover = outfit.imageUrl || "/placeholder-img.jpg"
 

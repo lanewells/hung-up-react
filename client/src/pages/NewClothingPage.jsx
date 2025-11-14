@@ -4,6 +4,7 @@ import { useCreateClothing } from "../hooks/useMutations"
 import { useTypes } from "../hooks/useTypes"
 import ImagePicker from "../components/ImagePicker"
 import { useConfirm } from "../components/ConfirmProvider"
+import PageMessage from "../components/PageMessage"
 import classes from "../styles/ClothingForms.module.scss"
 
 export default function NewClothingPage() {
@@ -73,8 +74,8 @@ export default function NewClothingPage() {
     })
   }
 
-  if (typesLoading) return <p>loading types…</p>
-  if (typesError) return <p>error: {typesError.message}</p>
+  if (typesLoading) return <PageMessage text="Loading..." />
+  if (typesError) return <PageMessage text={`error: ${typesError.message}`} />
 
   return (
     <main>

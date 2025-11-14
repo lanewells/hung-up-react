@@ -3,6 +3,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom"
 import { useClothing } from "../hooks/useClothes"
 import { useDeleteClothing } from "../hooks/useMutations"
 import { useConfirm } from "../components/ConfirmProvider"
+import PageMessage from "../components/PageMessage"
 import classes from "../styles/ClothingDetailPage.module.scss"
 
 function StarRating({ label, value, onChange }) {
@@ -89,19 +90,19 @@ export default function ClothingDetailPage() {
   if (isLoading)
     return (
       <main className={classes.container}>
-        <p>loading…</p>
+        <PageMessage text="Loading..." />
       </main>
     )
   if (error)
     return (
       <main className={classes.container}>
-        <p>error: {error.message}</p>
+        <PageMessage text={`error: ${error.message}`} />
       </main>
     )
   if (!clothing)
     return (
       <main className={classes.container}>
-        <p>not found</p>
+        <PageMessage text="Not found" />
       </main>
     )
 

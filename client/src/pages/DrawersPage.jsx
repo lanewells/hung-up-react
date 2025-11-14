@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 import { useMemo } from "react"
 import { useTypes } from "../hooks/useTypes"
 import { useClothes } from "../hooks/useClothes"
+import PageMessage from "../components/PageMessage"
 import classes from "../styles/DrawersPage.module.scss"
 
 export default function DrawersPage() {
@@ -52,9 +53,9 @@ export default function DrawersPage() {
     return map
   }, [drawers, clothesWithDrawer])
 
-  if (typesLoading || clothesLoading) return <p>loading…</p>
-  if (typesError) return <p>error: {typesError.message}</p>
-  if (clothesError) return <p>error: {clothesError.message}</p>
+  if (typesLoading || clothesLoading) return <PageMessage text="Loading" />
+  if (typesError) return <PageMessage text={typesError.message} />
+  if (clothesError) return <PageMessage tet={clothesError.message} />
 
   return (
     <main className={classes.container}>
@@ -87,7 +88,7 @@ export default function DrawersPage() {
             </Link>
           )
         })}
-        {drawers.length === 0 && <p>No drawers found.</p>}
+        {drawers.length === 0 && <PageMessage text="No drawers found" />}
       </div>
     </main>
   )
