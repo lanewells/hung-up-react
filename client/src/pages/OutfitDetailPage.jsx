@@ -3,7 +3,7 @@ import { useParams, useNavigate, useLocation, Link } from "react-router-dom"
 import { useOutfit } from "../hooks/useOutfit"
 import { useDeleteOutfit } from "../hooks/useOutfitMutations"
 import { useConfirm } from "../components/ConfirmProvider"
-import PageMessage from "../component/PageMessage"
+import PageMessage from "../components/PageMessage"
 import classes from "../styles/OutfitDetailPage.module.scss"
 
 function FavoriteHeart({ isFav }) {
