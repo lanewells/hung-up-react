@@ -36,6 +36,7 @@
   gap: 1rem;
   align-items: start;
   margin-top: 0.75rem;
+  grid-template-columns: 320px 1fr;
 }
 
 .imageContainer {
@@ -220,12 +221,12 @@
   }
 
   .outfitDetails {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: none;
     gap: 1.5rem;
   }
 
   .imageContainer {
-    justify-self: right;
+    justify-self: center;
   }
 
   .meta {
