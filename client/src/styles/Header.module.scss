@@ -64,7 +64,6 @@ nav {
   nav {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
   }
 
   .start {
@@ -73,12 +72,16 @@ nav {
     margin-top: 10px;
   }
 
-  .logo img {
-    max-width: 35px;
+  .logo {
+    padding: 5px;
+
+    img {
+      max-width: 25px;
+    }
   }
 
   header h2 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   .navLinksContainer {
