@@ -20,11 +20,22 @@ export default function DrawersPage() {
     error: clothesError
   } = useClothes()
 
+  const ORDER = [
+    "Tops",
+    "Bottoms",
+    "One-pieces",
+    "Outerwear",
+    "Shoes",
+    "Accessories"
+  ]
+
   const drawers = useMemo(() => {
-    return Array.from(
+    const unique = Array.from(
       new Set((types || []).map((t) => t.drawer).filter(Boolean))
     )
-      .sort()
+
+    return unique
+      .sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b))
       .slice(0, 6)
   }, [types])
 
@@ -54,8 +65,9 @@ export default function DrawersPage() {
   }, [drawers, clothesWithDrawer])
 
   if (typesLoading || clothesLoading) return <PageMessage text="Loading" />
-  if (typesError) return <PageMessage text={typesError.message} />
-  if (clothesError) return <PageMessage tet={clothesError.message} />
+  if (typesError) return <PageMessage text={`error: ${typesError.message}`} />
+  if (clothesError)
+    return <PageMessage text={`error: ${clothesError.message}`} />
 
   return (
     <main className={classes.container}>
