@@ -1,4 +1,4 @@
-![Hung-Up Header Banner](/client/public/banner.png)
+![Hung-Up Header Banner](client/public/banner.png)
 
 # Hung-Up
 
