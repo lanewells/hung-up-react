@@ -29,10 +29,10 @@ Featured in my full-stack portfolio, this app demonstrates:
 | **Clothing Management** | Add, edit, and rate your clothing items on different characteristics.                 |
 | **Outfit Builder**      | Combine pieces into curated looks, log a photo of yourself in the look for reference. |
 | **Drawers System**      | Access items easily through sorting by drawer.                                        |
-| **Smart Metadata**      | Add details like color, size, and weather/occasion tags, pick your favorites.         |
+| **Smart Metadata**      | Add details like color, size, and weather and occasion tags, pick your favorites.     |
 | **Image Uploads**       | Upload outfit and clothing photos using Cloudinary integration.                       |
 | **Demo Mode Notice**    | A visual banner and confirmational warning before any shared database changes.        |
-| **Full Deployment**     | Hosted via Render with a Node backend and Vite/React frontend.                        |
+| **Full Deployment**     | Hosted via Render with a Node backend and React frontend.                             |
 
 ---
 
@@ -57,20 +57,20 @@ Here are far more details than you asked for:
 hung-up/
 ├── api/                      # Express & MongoDB backend
 │   └── src/
-│       ├── controllers/      # Business logic for API routes
+│       ├── controllers/      # business logic for API routes
 │       ├── routes/           # Express route definitions
 │       ├── models/           # Mongoose schemas and data models
-│       ├── db/               # Database connection helpers
+│       ├── db/               # database connection helpers
 │       └── server.js         # Express server entry point
 │
 └── client/                   # React frontend
     └── src/
-        ├── components/       # Reusable UI components
-        ├── hooks/            # Custom React hooks
-        ├── pages/            # Route-level views
+        ├── components/       # reusable UI components
+        ├── hooks/            # custom React hooks
+        ├── pages/            # route-level views
         ├── styles/           # SCSS modules and theme files
-        ├── utils/            # Shared helper functions and formatting logic
-        └── lib/              # Client-side data layer or API service wrappers
+        ├── utils/            # shared helper functions and formatting logic
+        └── lib/              # client-side data layer or API service wrappers
 
 ```
 
@@ -78,23 +78,54 @@ hung-up/
 
 ## Screenshots
 
-<!-- TODO: add mobile screenshots -->
+| View               | Screenshot                                              | Mobile                                               |
+| ------------------ | ------------------------------------------------------- | ---------------------------------------------------- |
+| Home / Closet      | ![Closet View](/client/public/Screenshot_02.png)        | ![Closet View](/client/public/Mobile_02.jpg)         |
+| Clothes Index      | ![Clothes Index](/client/public/Screenshot_03.png)      | ![Clothes Index](/client/public/Mobile_04.jpeg)      |
+| Clothing Detail    | ![Clothing Detail](/client/public/Screenshot_39.png)    | ![Clothing Detail](/client/public/Mobile_08.jpeg)    |
+| Clothing Edit Form | ![Clothing Edit Form](/client/public/Screenshot_04.png) | ![Clothing Edit Form](/client/public/Mobile_12.jpeg) |
+| Outfits Index      | ![Outfits Index](/client/public/Screenshot_40.png)      | ![Outfits Index](/client/public/Mobile_22.jpeg)      |
+| Outfit Detail      | ![Outfit Detail](/client/public/Screenshot_13.png)      | ![Outfit Detail](/client/public/Mobile_26.jpeg)      |
+| Outfit Edit Form   | ![Outfit Edit Form](/client/public/Screenshot_36.png)   | ![Outfit Edit Form](/client/public/Mobile_32.jpeg)   |
+| Drawers Index      | ![Drawers Index](/client/public/Screenshot_18.png)      | ![Drawers Index](/client/public/Mobile_15.jpeg)      |
+| Filtered Index     | ![Filtered Index](/client/public/Screenshot_17.png)     | ![Filtered Index](/client/public/Mobile_18.jpeg)     |
 
-| View               | Screenshot                                           | Mobile |
-| ------------------ | ---------------------------------------------------- | ------ |
-| Home / Closet      | ![Closet View](/client/public/Screenshot_02.png)     |
-| Clothes Index      | ![Clothing Index](/client/public/Screenshot_03.png)  |
-| Clothing Detail    | ![Clothing Detail](/client/public/Screenshot_13.png) |
-| Clothing Edit Form | ![Outfit Index](/client/public/Screenshot_25.png)    |
-| Outfits Index      | ![Closet View](/client/public/Screenshot_02.png)     |
-| Outfit Detail      | ![Clothing Detail](/client/public/Screenshot_13.png) |
-| Outfit Edit Form   | ![Edit Form](/client/public/Screenshot_03.png)       |
-| Drawers Index      | ![Outfit Index](/client/public/Screenshot_25.png)    |
-| Filtered Index     | ![Outfit Index](/client/public/Screenshot_25.png)    |
+---
+
+## ERD
+
+![ERD](/client/public/erd_hung-up.jpg)
 
 ---
 
 ## Learning & Skill Development
+
+Although the app uses three models (Clothing, Type and Outfit), the user does not interact with Type directly. Instead, I use the drawer property on Type to categorize the clothing documents. This approach makes the experience more intuitive and keeps the interface streamlined and uncluttered.
+
+```JS
+// selected from the DrawersPage component:
+
+// get all drawers from the Type model
+const drawers = Array.from(
+  new Set(types.map(t => t.drawer).filter(Boolean))
+).sort(/*by ORDER array built previously*/)
+
+// attach each clothing item to its drawer
+const clothesWithDrawer = clothes.map(c => {
+  const typeId = c.type?._id
+  const drawer = typesById.get(typeId)?.drawer
+  return { ...c, drawer }
+})
+
+// render clothing previews grouped by drawer
+<Link to={`/clothes?drawer=${name}`}>
+  <span>{name}</span>
+  {/*preview items*/}
+</Link>
+
+```
+
+---
 
 ## Deployment
 
@@ -112,7 +143,9 @@ Start command:
 cd api && npm start
 ```
 
-Live site: hung-up-demo.onrender.com or [hung-up-demo.delaneywells.dev](https://hung-up-demo.delaneywells.dev)
+Live site: hung-up-demo.onrender.com
+
+(also at [hung-up-demo.delaneywells.dev](https://hung-up-demo.delaneywells.dev) )
 
 ---
 
@@ -120,12 +153,14 @@ Live site: hung-up-demo.onrender.com or [hung-up-demo.delaneywells.dev](https://
 
 Built by Delaney Wells.
 
-Design and development by me, inspired by the small daily decisions that reflect our biggest values.
+Design and development also by me, inspired by the small daily decisions that reflect our biggest values.
+
+This project is continually updated as I learn and form new ideas.
 
 ### License
 
-<!-- TODO: check if true  -->
-
 This project is licensed under the MIT License.
+
+Copyright (c) 2025 Delaney Wells
 
 You’re welcome to reference, fork, or use it for learning. As a reminder, please do not make changes to the database on my live demo...unless you want to hire me! ;)
