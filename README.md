@@ -78,23 +78,23 @@ hung-up/
 
 ## Screenshots
 
-| View               | Screenshot                                              | Mobile                                               |
-| ------------------ | ------------------------------------------------------- | ---------------------------------------------------- |
-| Home / Closet      | ![Closet View](/client/public/Screenshot_02.png)        | ![Closet View](/client/public/Mobile_02.jpg)         |
-| Clothes Index      | ![Clothes Index](/client/public/Screenshot_03.png)      | ![Clothes Index](/client/public/Mobile_04.jpeg)      |
-| Clothing Detail    | ![Clothing Detail](/client/public/Screenshot_39.png)    | ![Clothing Detail](/client/public/Mobile_08.jpeg)    |
-| Clothing Edit Form | ![Clothing Edit Form](/client/public/Screenshot_04.png) | ![Clothing Edit Form](/client/public/Mobile_12.jpeg) |
-| Outfits Index      | ![Outfits Index](/client/public/Screenshot_40.png)      | ![Outfits Index](/client/public/Mobile_22.jpeg)      |
-| Outfit Detail      | ![Outfit Detail](/client/public/Screenshot_13.png)      | ![Outfit Detail](/client/public/Mobile_26.jpeg)      |
-| Outfit Edit Form   | ![Outfit Edit Form](/client/public/Screenshot_36.png)   | ![Outfit Edit Form](/client/public/Mobile_32.jpeg)   |
-| Drawers Index      | ![Drawers Index](/client/public/Screenshot_18.png)      | ![Drawers Index](/client/public/Mobile_15.jpeg)      |
-| Filtered Index     | ![Filtered Index](/client/public/Screenshot_17.png)     | ![Filtered Index](/client/public/Mobile_18.jpeg)     |
+| View               | Screenshot                                             | Mobile                                              |
+| ------------------ | ------------------------------------------------------ | --------------------------------------------------- |
+| Home / Closet      | ![Closet View](client/public/Screenshot_02.png)        | ![Closet View](client/public/Mobile_02.jpg)         |
+| Clothes Index      | ![Clothes Index](client/public/Screenshot_03.png)      | ![Clothes Index](client/public/Mobile_04.jpeg)      |
+| Clothing Detail    | ![Clothing Detail](client/public/Screenshot_39.png)    | ![Clothing Detail](client/public/Mobile_08.jpeg)    |
+| Clothing Edit Form | ![Clothing Edit Form](client/public/Screenshot_04.png) | ![Clothing Edit Form](client/public/Mobile_12.jpeg) |
+| Outfits Index      | ![Outfits Index](client/public/Screenshot_40.png)      | ![Outfits Index](client/public/Mobile_22.jpeg)      |
+| Outfit Detail      | ![Outfit Detail](client/public/Screenshot_13.png)      | ![Outfit Detail](client/public/Mobile_26.jpeg)      |
+| Outfit Edit Form   | ![Outfit Edit Form](client/public/Screenshot_36.png)   | ![Outfit Edit Form](client/public/Mobile_32.jpeg)   |
+| Drawers Index      | ![Drawers Index](client/public/Screenshot_18.png)      | ![Drawers Index](client/public/Mobile_15.jpeg)      |
+| Filtered Index     | ![Filtered Index](client/public/Screenshot_17.png)     | ![Filtered Index](client/public/Mobile_18.jpeg)     |
 
 ---
 
 ## ERD
 
-![ERD](/client/public/erd_hung-up.jpg)
+![ERD](client/public/erd_hung-up.jpg)
 
 ---
 
