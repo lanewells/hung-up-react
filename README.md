@@ -2,9 +2,20 @@
 
 # Hung-Up
 
-_A full-stack wardrobe organizer built with React, Express, and MongoDB._
-
 [Live demo](https://hung-up-demo.delaneywells.dev)
+
+**Stack:** React · Express (Node) · MongoDB · Cloudinary · Render
+
+**What this project shows**
+
+- End-to-end CRUD across a React frontend and custom REST API
+- Thoughtful data modeling connecting Types, Clothing, and Outfits
+- Image upload handling and media persistence
+- Full deployment using a monorepo setup
+
+---
+
+_A full-stack wardrobe organizer built with React, Express, and MongoDB._
 
 Hung-Up helps users catalog their clothes, outfits, and plan for occasions. This is a digital wardrobe built for the indecisive who dread getting dressed (like myself), _and_ for the fashion obsessed organizers-at-heart.
 
@@ -17,8 +28,6 @@ Featured in my full-stack portfolio, this app demonstrates:
 - Image uploads via Cloudinary
 - CRUD operations with live demo data
 - Deployment on Render using a monorepo setup
-
-> **Note:** This public demo uses a shared database — any changes you make (adding, editing, or deleting items) will be visible to others. Please do not make changes unless you want to hire me. 😊
 
 ---
 
@@ -33,6 +42,12 @@ Featured in my full-stack portfolio, this app demonstrates:
 | **Image Uploads**       | Upload outfit and clothing photos using Cloudinary integration.                       |
 | **Demo Mode Notice**    | A visual banner and confirmational warning before any shared database changes.        |
 | **Full Deployment**     | Hosted via Render with a Node backend and React frontend.                             |
+
+---
+
+## Demo environment:
+
+This public demo uses a shared database. Any changes you make (adding, editing, or deleting items) will be visible to others. Please do not make changes unless you want to hire me. 😊
 
 ---
 
